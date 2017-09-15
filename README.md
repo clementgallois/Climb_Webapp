@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.1.
 
+## Pre-Prod server
+isntall angular cli general `sudo npm install -g @angular/cli@1.0.1`
+Run `ng serve --host 0.0.0.0:4200 --public-host ip.of.the.server:4200`
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
