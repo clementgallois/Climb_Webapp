@@ -3,8 +3,27 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.1.
 
 ## Pre-Prod server
-isntall angular cli general `sudo npm install -g @angular/cli@1.0.1`
-Run `ng serve --host 0.0.0.0:4200 --public-host ip.of.the.server:4200`
+install angular cli general and http-server 
+```
+sudo npm install -g @angular/cli
+sudo npm install -g http-server
+```
+
+
+inside the folder:
+```
+npm install
+ng build
+```
+
+give the right for the 80port to user:
+```
+sudo apt-get install libcap2-bin
+sudo setcap cap_net_bind_service=+ep path/to/http-server
+```
+now start the server with `pm2 start start.sh --name "webapp"`
+
+
 
 ## Development server
 
