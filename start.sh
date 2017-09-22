@@ -1,2 +1,2 @@
 #!/bin/bash
-ng serve --host 0.0.0.0 --public-host 35.176.123.200
+/usr/bin/http-server /home/ubuntu/Climb_Webapp/dist -a 172.31.2.249 -p 80
