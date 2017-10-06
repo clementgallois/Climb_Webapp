@@ -8,6 +8,7 @@ import { AuthService } from './auth/auth.service';
 import { ProfileService } from './profile/profile.service';
 import { VideosService } from './videos/videos.service';
 import { BattlesService } from './battles/battles.service';
+import { RankingService } from './ranking/ranking.service';
 
 
 import { AppComponent } from './app.component';
@@ -27,6 +28,7 @@ import { BookComponent } from './profile/book/book.component';
 import { OverviewComponent } from './settings/overview/overview.component';
 import { SettingsProfileComponent } from './settings/profile/profile.component';
 import { UploadComponent } from './upload/upload.component';
+import { RankingComponent } from './ranking/ranking.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { UploadComponent } from './upload/upload.component';
     BookComponent,
     OverviewComponent,
     SettingsProfileComponent,
-    UploadComponent
+    UploadComponent,
+    RankingComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +60,7 @@ import { UploadComponent } from './upload/upload.component';
     AuthService,
     ProfileService,
     VideosService,
+    RankingService,
     BattlesService
   ],
   bootstrap: [AppComponent]

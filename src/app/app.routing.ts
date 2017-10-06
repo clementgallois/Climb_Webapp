@@ -15,6 +15,7 @@ import { OverviewComponent } from './settings/overview/overview.component';
 import { SettingsProfileComponent } from './settings/profile/profile.component';
 
 import { UploadComponent } from './upload/upload.component';
+import { RankingComponent } from './ranking/ranking.component';
 import { AuthGuard } from './_guards/index';
 
 const appRoutes: Routes = [
@@ -29,6 +30,7 @@ const appRoutes: Routes = [
   { path: 'signUp', component: SignUpComponent },
   { path: '', component: NavComponent, canActivate: [AuthGuard], children: [
     { path: 'upload', component: UploadComponent },
+    { path: 'ranking', component: RankingComponent },
     { path: 'home', component: HomeComponent, children: [
       { path: 'videos', component: VideosFeedComponent },
       { path: 'battles', component: BattlesFeedComponent },
