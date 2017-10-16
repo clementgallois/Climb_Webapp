@@ -11,11 +11,11 @@ import { SettingsComponent } from './settings/settings-page.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileVideosComponent } from './profile/videos/videos.component';
 import { BookComponent } from './profile/book/book.component';
-import { OverviewComponent } from './settings/overview/overview.component';
 import { SettingsProfileComponent } from './settings/profile/profile.component';
 
 import { UploadComponent } from './upload/upload.component';
 import { RankingComponent } from './ranking/ranking.component';
+import { VideoComponent } from './video/video.component';
 import { AuthGuard } from './_guards/index';
 
 const appRoutes: Routes = [
@@ -23,7 +23,7 @@ const appRoutes: Routes = [
   { path: '', redirectTo: '/home/videos', pathMatch: 'full' },
   { path: 'home', redirectTo: '/home/videos', pathMatch: 'full'},
   { path: 'profile', redirectTo: '/profile/videos', pathMatch: 'full' },
-  { path: 'settings', redirectTo: '/settings/overview', pathMatch: 'full' },
+  { path: 'settings', redirectTo: '/settings/editProfile', pathMatch: 'full' },
 
   //routes
   { path: 'login', component: AuthComponent },
@@ -32,6 +32,7 @@ const appRoutes: Routes = [
     { path: 'upload', component: UploadComponent },
     { path: 'ranking', component: RankingComponent },
     { path: 'home', component: HomeComponent, children: [
+      { path: 'video/:id', component: VideoComponent },
       { path: 'videos', component: VideosFeedComponent },
       { path: 'battles', component: BattlesFeedComponent },
       { path: 'news', component: NewsListComponent }
@@ -41,7 +42,6 @@ const appRoutes: Routes = [
       { path: 'book', component: BookComponent }
     ]},
     { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard], children: [
-      { path: 'overview', component: OverviewComponent },
       { path: 'editProfile', component: SettingsProfileComponent },
     ]}
   ] }

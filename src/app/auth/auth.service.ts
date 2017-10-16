@@ -27,11 +27,12 @@ export class AuthService {
     private _http: Http){}
 
     facebookHandler() {
-      FB.login(function(response) {
+      const _http = this._http;
+      return FB.login(function(response) {
         // handle the response
         FB.api('/me', {fields: 'name,first_name,last_name,email,gender,picture'}, function(response) {
-            console.log("Response - > " + response)
-            console.log("Email -> " + response.email);
+            console.log("Response - > " + JSON.stringify(response))
+            //console.log("Email -> " + response.email);
             if (response.email) {
               var name = response.name;
               var firstName = response.first_name;
@@ -44,8 +45,9 @@ export class AuthService {
               headers.append('Content-Type', 'application/json');
               console.log('Going to send the api request');
               name = name.split(' ').join('')
-              console.log(name);
-              return this._http.post(
+              console.log("_http", this._http)
+              console.log("wouhou", _http);
+              return _http.post(
                 this.baseUrl + '/register',
                 JSON.stringify({'name': name, 'firstName': firstName, 'lastName': last_name ,'email': email,
                 'pictureUrl': pictureUrl, 'gender': gender, 'route': route}),
@@ -61,14 +63,15 @@ export class AuthService {
                 console.log('Res -> ' + JSON.stringify(res))
                   console.log('Return res')
                 return res;
-              }, {scope: "email"});
+              });
             }
             else {
               alert("It seems that you didn't confirm the email address you use with Facebook :)")
             }
             //this._signUpService.facebookHandler(response.first_name, response.last_name, response.email, response.gender);
           });
-        });
+          return this.res
+        },{scope: 'email'});
   }
 
   googleHandler(googleUser) {
@@ -89,6 +92,7 @@ export class AuthService {
     console.log('Going to send the api request');
     name = name.split(' ').join('')
     console.log(name);
+    console.log("_http", this._http)
     return this._http.post(
       this.baseUrl + '/register',
       JSON.stringify({'name': name, 'email': email,

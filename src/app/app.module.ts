@@ -25,9 +25,9 @@ import { SettingsComponent } from './settings/settings-page.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileVideosComponent } from './profile/videos/videos.component';
 import { BookComponent } from './profile/book/book.component';
-import { OverviewComponent } from './settings/overview/overview.component';
 import { SettingsProfileComponent } from './settings/profile/profile.component';
 import { UploadComponent } from './upload/upload.component';
+import { VideoComponent } from './video/video.component';
 import { RankingComponent } from './ranking/ranking.component';
 
 @NgModule({
@@ -44,9 +44,9 @@ import { RankingComponent } from './ranking/ranking.component';
     ProfileComponent,
     ProfileVideosComponent,
     BookComponent,
-    OverviewComponent,
     SettingsProfileComponent,
     UploadComponent,
+    VideoComponent,
     RankingComponent
   ],
   imports: [

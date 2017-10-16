@@ -62,9 +62,9 @@
     "styleExt": "css",
       "component": {},
     "serve": {
-	"port": 80,
+	"port": 4200,
 	"host": "172.31.2.249"
-	
+
       }
   }
 }

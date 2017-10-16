@@ -30,7 +30,13 @@ export class AuthComponent implements AfterViewInit {
   }
 
   onFacebookLoginClick() {
-    this._authService.facebookHandler();
+    this._authService.facebookHandler().subscribe((result) => {
+      if (result.success) {
+        this._router.navigateByUrl('/home/videos');
+      } else {
+        console.log("Registration failed !");
+      }
+    });
 
   }
 
@@ -62,7 +68,6 @@ export class AuthComponent implements AfterViewInit {
   attachSignin(element) {
     this.auth2.attachClickHandler(element, {},
       (googleUser) => {
-        console.log('Before google')
           this._authService.googleHandler(googleUser).subscribe((result) => {
             if (result.success) {
               this._router.navigateByUrl('/home/videos');
