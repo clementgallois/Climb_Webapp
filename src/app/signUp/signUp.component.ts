@@ -38,8 +38,17 @@ constructor(private _signUpService: SignUpService, private _route: ActivatedRout
 }
 
 onFacebookLoginClick() {
-  this._signUpService.facebookHandler();
-
+  FB.login((response) => {
+    FB.api('/me', {fields: 'name,first_name,last_name,email,gender,picture'}, (response) => {
+      this._signUpService.facebookHandler(response).subscribe((result) => {
+        if (result.success) {
+          this._router.navigateByUrl('/home/videos');
+        } else {
+          console.log("Registration failed !");
+        }
+      });
+    });
+  },{scope: 'email'});
 }
 
 onFacebookLogout() {

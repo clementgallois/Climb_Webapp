@@ -19,12 +19,7 @@ export class SignUpService {
     private _router: Router,
     private _http: Http){}
 
-    facebookHandler() {
-      FB.login(function(response) {
-        // handle the response
-        FB.api('/me', {fields: 'name,first_name,last_name,email,gender,picture'}, function(response) {
-            console.log("Response - > " + response)
-            console.log("Email -> " + response.email);
+    facebookHandler(response) {
             if (response.email) {
               var name = response.name;
               var firstName = response.first_name;
@@ -37,7 +32,7 @@ export class SignUpService {
               headers.append('Content-Type', 'application/json');
               console.log('Going to send the api request');
               name = name.split(' ').join('')
-              console.log(name);
+              console.log(name)
               return this._http.post(
                 this.baseUrl + '/register',
                 JSON.stringify({'name': name, 'firstName': firstName, 'lastName': last_name ,'email': email,
@@ -45,6 +40,7 @@ export class SignUpService {
                  {headers}
                 ).map(res => res.json())
                 .map((res) => {
+                  console.log('res', res)
                   console.log('Avant de print res')
                   if (res.success) {
                   console.log("Registration Successful !");
@@ -54,14 +50,11 @@ export class SignUpService {
                 console.log('Res -> ' + JSON.stringify(res))
                   console.log('Return res')
                 return res;
-              }, {scope: "email"});
+              });
             }
             else {
               alert("It seems that you didn't confirm the email address you use with Facebook :)")
             }
-            //this._signUpService.facebookHandler(response.first_name, response.last_name, response.email, response.gender);
-          });
-        });
   }
 
   googleHandler(googleUser) {

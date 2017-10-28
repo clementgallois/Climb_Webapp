@@ -30,14 +30,17 @@ export class AuthComponent implements AfterViewInit {
   }
 
   onFacebookLoginClick() {
-    this._authService.facebookHandler().subscribe((result) => {
-      if (result.success) {
-        this._router.navigateByUrl('/home/videos');
-      } else {
-        console.log("Registration failed !");
-      }
-    });
-
+    FB.login((response) => {
+      FB.api('/me', {fields: 'name,first_name,last_name,email,gender,picture'}, (response) => {
+        this._authService.facebookHandler(response).subscribe((result) => {
+          if (result.success) {
+            this._router.navigateByUrl('/home/videos');
+          } else {
+            console.log("Registration failed !");
+          }
+        });
+      });
+    },{scope: 'email'});
   }
 
   onFacebookLogout() {
