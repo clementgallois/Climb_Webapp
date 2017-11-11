@@ -37,7 +37,6 @@ export class ProfileService {
       )
       .map(res => res.json())
       .map((res) => {
-        console.log(res);
         return res;
       });
   }
@@ -57,7 +56,6 @@ export class ProfileService {
       )
       .map(res => res.json())
       .map((res) => {
-        console.log(res);
         return res;
       });
   }

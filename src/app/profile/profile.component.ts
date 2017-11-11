@@ -40,7 +40,7 @@ export class ProfileComponent {
         this.isOwner = result.isOwner;
         this.isFollowing = result.isFollowing;
       } else {
-        console.log("Authentification failed !");
+        alert("Authentification failed !");
       }
     });
   }

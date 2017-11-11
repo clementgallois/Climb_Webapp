@@ -30,12 +30,10 @@ export class UploadComponent {
   		let headers = new Headers();
 
       	headers.append('x-access-token', localStorage.getItem("token"));
-      	console.log(formData);
   		this._http.post(this.baseUrl + "/videos/upload", formData, { headers: headers })
   		.map((res:Response) => res.json()).subscribe(
                   //map the success function and alert the response
                    (success) => {
-                   		console.log(success);
                            alert("success");
                   },
                   (error) => alert("error"))

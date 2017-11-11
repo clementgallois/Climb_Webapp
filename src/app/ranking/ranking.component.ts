@@ -16,10 +16,9 @@ export class RankingComponent implements AfterViewInit {
    	this._rankingService.getRankingLikes().subscribe((result) => {
      	if (result.success) {
        		this.ranking = result.likes;
-       		console.log(this.ranking);
-      	} 
+      	}
       	else {
-       	 console.log('Videos feed failed');
+       	 alert('Videos feed failed');
       	}
     });
 	}

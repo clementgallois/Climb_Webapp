@@ -28,7 +28,6 @@ export class VideoService {
       )
       .map(res => res.json())
       .map((res) => {
-        console.log(res);
         return res;
       });
   }
@@ -46,13 +45,11 @@ export class VideoService {
       )
       .map(res => res.json())
       .map((res) => {
-        console.log(res);
         return res;
       });
   }
 
   getVideo(id) {
-    console.log(id)
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');

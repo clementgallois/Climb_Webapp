@@ -44,7 +44,7 @@ onFacebookLoginClick() {
         if (result.success) {
           this._router.navigateByUrl('/home/videos');
         } else {
-          console.log("Registration failed !");
+          alert("Registration failed !");
         }
       });
     });
@@ -85,7 +85,7 @@ attachSignin(element) {
             this._router.navigateByUrl('/home/videos');
             //window.location.reload();
           } else {
-            console.log("Registration failed !");
+            alert("Registration failed !");
           }
         });
 
@@ -99,7 +99,7 @@ onSubmit(f: NgForm) {
     if (result.success) {
       this._router.navigateByUrl('/home/videos');
     } else {
-      console.log("Registration failed !");
+      alert("Registration failed !");
     }
   });
 }
@@ -159,7 +159,6 @@ onGenderChange(gender) {
   ngOnInit() {
     FB.getLoginStatus(response => {
         this.statusChangeCallback(response);
-        console.log(response.authResponse.accessToken );
     });
   }
 

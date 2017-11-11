@@ -6,7 +6,7 @@ import { BattlesService } from '../battles.service';
   templateUrl: './battles.component.html',
   styleUrls: ['./battles.component.css']
 })
- 
+
  export class BattlesFeedComponent {
    constructor(private _battlesService: BattlesService){}
 
@@ -16,9 +16,8 @@ import { BattlesService } from '../battles.service';
     this._battlesService.getFeedBattles().subscribe((result) => {
       if (result.success) {
         this.battles = result.battles;
-        console.log(this.battles);
       } else {
-        console.log('battles feed failed');
+        alert('battles feed failed');
       }
     });
   }
@@ -47,7 +46,7 @@ import { BattlesService } from '../battles.service';
 
       	}
       } else {
-        console.log('battle like failed');
+        alert('battle like failed');
       }
     });
   }
@@ -64,7 +63,7 @@ import { BattlesService } from '../battles.service';
       	battle.video_1.isVoted = false;
       	battle.video_2.isVoted = false;
       } else {
-        console.log('battle unlike failed');
+        alert('battle unlike failed');
       }
     });
   }

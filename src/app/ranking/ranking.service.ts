@@ -29,7 +29,6 @@ export class RankingService {
       )
       .map(res => res.json())
       .map((res) => {
-        console.log(res);
         return res;
       });
   }

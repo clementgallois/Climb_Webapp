@@ -22,12 +22,8 @@ private video;
     .subscribe((result) => {
       if (result.success) {
         this.video = result.video;
-        console.log(this.video);
-      } else {
-        console.log('Video failed');
       }
     });
-    console.log(this.video)
   }
 
   like(video: any) {
@@ -35,8 +31,6 @@ private video;
       if (result.success) {
         video.isLiked = true;
         video.likes += 1;
-      } else {
-        console.log('Video like failed');
       }
     });
   }
@@ -46,8 +40,6 @@ private video;
       if (result.success) {
         video.isLiked = false;
         video.likes -= 1;
-      } else {
-        console.log('Video unlike failed');
       }
     });
   }

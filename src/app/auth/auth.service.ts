@@ -37,9 +37,7 @@ export class AuthService {
               var route = "facebook";
               let headers = new Headers();
               headers.append('Content-Type', 'application/json');
-              console.log('Going to send the api request');
               name = name.split(' ').join('')
-              console.log(name)
               return this._http.post(
                 this.baseUrl + '/register',
                 JSON.stringify({'name': name, 'firstName': firstName, 'lastName': last_name ,'email': email,
@@ -47,15 +45,10 @@ export class AuthService {
                  {headers}
                 ).map(res => res.json())
                 .map((res) => {
-                  console.log('res', res)
-                  console.log('Avant de print res')
                   if (res.success) {
-                  console.log("Registration Successful !");
                   localStorage.setItem('token', res.token);
                   localStorage.setItem('username', res.user.profile.username);
                   }
-                console.log('Res -> ' + JSON.stringify(res))
-                  console.log('Return res')
                 return res;
               });
             }
@@ -70,13 +63,10 @@ export class AuthService {
     var email = profile.getEmail();
     var pictureUrl = profile.getImageUrl();
     var route = 'google';
-    console.log('name', name)
-    console.log(name + email + pictureUrl)
+
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    console.log('Going to send the api request');
     name = name.split(' ').join('')
-    console.log('name', name)
     return this._http.post(
       this.baseUrl + '/register',
       JSON.stringify({'name': name, 'email': email,
@@ -84,15 +74,10 @@ export class AuthService {
        {headers}
       ).map(res => res.json())
       .map((res) => {
-        console.log(res)
-        console.log('Avant de print res')
         if (res.success) {
-        console.log("Registration Successful !");
         localStorage.setItem('token', res.token);
         localStorage.setItem('username', res.user.profile.username);
         }
-      console.log('Res -> ' + JSON.stringify(res))
-        console.log('Return res')
       return res;
     });
 }
@@ -114,9 +99,7 @@ export class AuthService {
       )
       .map(res => res.json())
       .map((res) => {
-        console.log(res);
         if (res.success) {
-          console.log("Authentification Successful !");
           localStorage.setItem('token', res.token);
           localStorage.setItem('username', res.user.profile.username);
           this.loggedIn = true;

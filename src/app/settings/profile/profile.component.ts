@@ -50,15 +50,13 @@ constructor(private _service: ProfileService, private _http: Http, private route
         this.selectedValue = this.user.profile.gender;
         this.url = this.user.profile.pictureUrl;
       } else {
-        console.log("Authentification failed !");
+        alert("Authentification failed !");
       }
-        console.log("AfterViewInit");
     });
   }
 
   onGenderChange(gender) {
     this.selectedValue = gender;
-    console.log(gender);
   }
 
   openNav() {
@@ -100,8 +98,6 @@ constructor(private _service: ProfileService, private _http: Http, private route
     const bio = this.user.profile.bio;
 
     if(this.isChanged == true) {
-      console.log(this.photoFile);
-      console.log(this.user.profile.pictureUrl);
       let headers = new Headers();
       let picture = new FormData();
 
@@ -112,7 +108,6 @@ constructor(private _service: ProfileService, private _http: Http, private route
       .map((res:Response) => res.json()).subscribe(
                   //map the success function and alert the response
                    (success) => {
-                   		console.log(success);
                            alert("success");
                   },
                   (error) => alert("tendu"))
@@ -125,7 +120,6 @@ constructor(private _service: ProfileService, private _http: Http, private route
         'gender': gender,
         'bio': bio
       };
-      console.log(formData);
       let headers = new Headers();
 
       	headers.append('x-access-token', localStorage.getItem("token"));
@@ -134,7 +128,6 @@ constructor(private _service: ProfileService, private _http: Http, private route
         .map((res:Response) => res.json()).subscribe(
                     //map the success function and alert the response
                      (success) => {
-                     		console.log(success);
                              alert("success");
                     },
                     (error) => alert("error"))

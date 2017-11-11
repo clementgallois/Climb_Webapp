@@ -3,7 +3,7 @@
   <div *ngFor="let video of videos" class="panel video">
     <div class="video-heading">
       <img src="{{video.ownerId.profile.pictureUrl}}">
-      <a href="#">{{video.ownerId.profile.username}}</a>
+      <a [routerLink]="['/profile']">{{video.ownerId.profile.username}}</a>
       <span class="video-category">{{video.category}}</span>
     </div>
     <div class="video-content">

@@ -36,7 +36,7 @@ export class AuthComponent implements AfterViewInit {
           if (result.success) {
             this._router.navigateByUrl('/home/videos');
           } else {
-            console.log("Registration failed !");
+            alert("Registration failed !");
           }
         });
       });
@@ -75,7 +75,7 @@ export class AuthComponent implements AfterViewInit {
             if (result.success) {
               this._router.navigateByUrl('/home/videos');
             } else {
-              console.log("Registration failed !");
+              alert("Registration failed !");
             }
           });
 
@@ -102,7 +102,7 @@ export class AuthComponent implements AfterViewInit {
       if (result.success) {
         this._router.navigateByUrl('/home/videos');
       } else {
-        console.log("Authentification failed !");
+        alert("Authentification failed !");
       }
     });
   }

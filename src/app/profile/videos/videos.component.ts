@@ -28,7 +28,7 @@ private baseUrl = environment.apiUrl;
       if (result.success) {
         this.videos = result.videos;
       } else {
-        console.log('Videos profile failed');
+        alert('Videos profile failed');
       }
     });
   }
@@ -39,7 +39,7 @@ private baseUrl = environment.apiUrl;
         video.isLiked = true;
         video.likes += 1;
       } else {
-        console.log('Video like failed');
+        alert('Video like failed');
       }
     });
   }
@@ -50,7 +50,7 @@ private baseUrl = environment.apiUrl;
         video.isLiked = false;
         video.likes -= 1;
       } else {
-        console.log('Video unlike failed');
+        alert('Video unlike failed');
       }
     });
   }
@@ -60,7 +60,7 @@ private baseUrl = environment.apiUrl;
   }
 
   submit() {
-    console.log("challengedVideoId -> " + this.challengedVideoId)
+    alert("challengedVideoId -> " + this.challengedVideoId)
     let video: HTMLInputElement = this.el.nativeElement.querySelector('#video').files.item(0);
   	let title: HTMLInputElement = this.el.nativeElement.querySelector('#title').value;
   	let description: HTMLInputElement = this.el.nativeElement.querySelector('#description').value;
@@ -73,20 +73,15 @@ private baseUrl = environment.apiUrl;
   		let headers = new Headers();
 
       	headers.append('x-access-token', localStorage.getItem("token"));
-      	console.log(formData);
+      	alert(formData);
   		return this._http.post(this.baseUrl + "/videos/upload", formData, { headers: headers })
         .map(res => res.json())
         .map((res) => {
           if (res.success) {
             this.competitorVideoId = res.video._id
-            console.log("competitorVideoId -> " + this.competitorVideoId)
-          }
-          else {
-            console.log('Res -> ' + JSON.stringify(res))
           }
       });
     }
-    console.log("Before battle")
     let formData2 = new FormData();
     formData.append('video_1', this.challengedVideoId);
     formData.append('video_2', this.competitorVideoId);
@@ -96,7 +91,6 @@ private baseUrl = environment.apiUrl;
     .map((res:Response) => res.json()).subscribe(
                 //map the success function and alert the response
                  (success) => {
-                    console.log(success);
                          alert("success");
                 },
                 (error) => alert("error"))
