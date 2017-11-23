@@ -12,6 +12,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { ProfileVideosComponent } from './profile/videos/videos.component';
 import { BookComponent } from './profile/book/book.component';
 import { SettingsProfileComponent } from './settings/profile/profile.component';
+import { ProfileBattlesComponent } from './profile/battles/battles.component';
+import { SearchComponent } from './search/search.component';
 
 import { UploadComponent } from './upload/upload.component';
 import { RankingComponent } from './ranking/ranking.component';
@@ -31,6 +33,7 @@ const appRoutes: Routes = [
   { path: '', component: NavComponent, canActivate: [AuthGuard], children: [
     { path: 'upload', component: UploadComponent },
     { path: 'ranking', component: RankingComponent },
+    { path: 'search', component: SearchComponent },
     { path: 'home', component: HomeComponent, children: [
       { path: 'video/:id', component: VideoComponent },
       { path: 'videos', component: VideosFeedComponent },
@@ -39,6 +42,7 @@ const appRoutes: Routes = [
     ]},
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], children: [
       { path: 'videos', component: ProfileVideosComponent},
+      { path: 'battles', component: ProfileBattlesComponent},
       { path: 'book', component: BookComponent }
     ]},
     { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard], children: [

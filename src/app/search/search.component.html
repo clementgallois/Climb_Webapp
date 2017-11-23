@@ -1,0 +1,14 @@
+<div class="overview">
+  <div class="widget profile">
+    <div class="container">
+      <h4 class="widget-caption">Utilisateurs</h4>
+      <br>
+      <div class="row">
+        <div *ngFor="let user of users" class="col-sm-6">
+          <img style="width: 70px; heigth: 70px;" src="{{user.profile.pictureUrl}}">
+          <a [routerLink]="['/profile']">{{user.profile.username}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

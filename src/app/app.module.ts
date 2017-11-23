@@ -8,6 +8,7 @@ import { AuthService } from './auth/auth.service';
 import { ProfileService } from './profile/profile.service';
 import { VideosService } from './videos/videos.service';
 import { BattlesService } from './battles/battles.service';
+import { SearchService } from './search/search.service';
 import { RankingService } from './ranking/ranking.service';
 
 
@@ -24,10 +25,12 @@ import { NewsListComponent } from './news/news-list.component';
 import { SettingsComponent } from './settings/settings-page.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileVideosComponent } from './profile/videos/videos.component';
+import { ProfileBattlesComponent } from './profile/battles/battles.component';
 import { BookComponent } from './profile/book/book.component';
 import { SettingsProfileComponent } from './settings/profile/profile.component';
 import { UploadComponent } from './upload/upload.component';
 import { VideoComponent } from './video/video.component';
+import { SearchComponent } from './search/search.component';
 import { RankingComponent } from './ranking/ranking.component';
 
 @NgModule({
@@ -43,9 +46,11 @@ import { RankingComponent } from './ranking/ranking.component';
     SettingsComponent,
     ProfileComponent,
     ProfileVideosComponent,
+    ProfileBattlesComponent,
     BookComponent,
     SettingsProfileComponent,
     UploadComponent,
+    SearchComponent,
     VideoComponent,
     RankingComponent
   ],
@@ -61,7 +66,8 @@ import { RankingComponent } from './ranking/ranking.component';
     ProfileService,
     VideosService,
     RankingService,
-    BattlesService
+    BattlesService,
+    SearchService
   ],
   bootstrap: [AppComponent]
 })
