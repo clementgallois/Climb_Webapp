@@ -22,6 +22,7 @@ private video;
     .subscribe((result) => {
       if (result.success) {
         this.video = result.video;
+        console.log(this.video);
       }
     });
   }
