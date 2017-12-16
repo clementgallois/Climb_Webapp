@@ -1,7 +1,7 @@
 import { Component, AfterViewInit, ElementRef } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { VideosService } from '../../videos/videos.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -15,7 +15,8 @@ private baseUrl = environment.apiUrl;
   constructor(private _router: Router,
   private _http: Http,
    private el: ElementRef,
-   private _videosService: VideosService){}
+   private _videosService: VideosService,
+   private route: ActivatedRoute){}
 
   private videos = [];
   private userProfilePicture = '';
@@ -24,7 +25,7 @@ private baseUrl = environment.apiUrl;
   private competitorVideoId;
 
   ngAfterViewInit() {
-    this._videosService.getProfileVideos().subscribe((result) => {
+    this._videosService.getProfileVideos(this.route.snapshot.params["username"]).subscribe((result) => {
       if (result.success) {
         this.videos = result.videos;
       } else {

@@ -1,0 +1,69 @@
+<div class="row" style="margin-top: 30px; margin-bottom: 30px">
+    <div class="col-md-offset-1 col-md-10">
+      <div class="row">
+        <div class="col-md-3 col-xs-12">
+          <div class="profile-nav">
+            <div class="panel">
+              <div class="user-heading round">
+                <a class="user-picture">
+                  <img src={{pictureProfil}} >
+                </a>
+                <h1>{{firstName}} {{lastName}}</h1>
+                <p>{{bio}}</p>
+                <ul class="list-inline">
+                  <li class="list-inline-item">
+                    <a href="#">
+                      <p>{{battles}}</p>
+                      <p>Battles</p>
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#">
+                      <p>{{followers}}</p>
+                      <p>Followers</p>
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#">
+                      <p>{{following}}</p>
+                      <p>Following</p>
+                    </a>
+                  </li>
+                </ul>
+                <a *ngIf="isFollowing == false && isOwner == false"
+                  (click)="follow()" class="btn btn-default follow">
+                  Follow
+                </a>
+                <a *ngIf="isFollowing == true && isOwner == false"
+                  (click)="unfollow()" class="btn btn-default unfollow">
+                  Unfollow
+                </a>
+              </div>
+              <ul class="nav nav-pills nav-stacked">
+                <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                  <a [routerLink]="['videos']">
+                    <i class="fa fa-video-camera"></i>
+                    Videos</a>
+                </li>
+                <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                  <a [routerLink]="['battles']">
+                    <i class="fa fa-bolt"></i>
+                    Ses battles
+                  </a>
+                </li>
+                <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                  <a [routerLink]="['book']">
+                    <i class="fa fa-picture-o"></i>
+                    Book
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8 col-xs-12">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+</div><!--/.container-->

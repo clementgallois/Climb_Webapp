@@ -1,7 +1,7 @@
 import { Component, AfterViewInit, ElementRef } from '@angular/core';
 import { ProfileService } from '../../profile/profile.service';
 import { Http, Headers, Response } from '@angular/http';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import {NgForm} from '@angular/forms';
 import { environment } from '../../../environments/environment';
 
@@ -40,11 +40,12 @@ export class SettingsProfileComponent {
   private isChanged = false;
   private photoFile = null;
 
-constructor(private _service: ProfileService, private _http: Http, private router: Router,  private el: ElementRef){
+constructor(private _service: ProfileService, private _http: Http,
+  private router: Router,  private el: ElementRef, private route: ActivatedRoute){
 }
 
   ngAfterViewInit() {
-    this._service.getProfileData().subscribe((result) => {
+    this._service.getProfileData(this.route.snapshot.params["username"]).subscribe((result) => {
       if (result.success) {
         this.user = result.user;
         this.selectedValue = this.user.profile.gender;

@@ -32,6 +32,14 @@ import { UploadComponent } from './upload/upload.component';
 import { VideoComponent } from './video/video.component';
 import { SearchComponent } from './search/search.component';
 import { RankingComponent } from './ranking/ranking.component';
+import { ProfileOtherBattlesComponent } from './profileOther/battles/battles.component';
+import { BookOtherComponent } from './profileOther/book/book.component';
+import { ProfileOtherVideosComponent } from './profileOther/videos/videos.component';
+import { ProfileOtherComponent } from './profileOther/profile.component';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -52,7 +60,11 @@ import { RankingComponent } from './ranking/ranking.component';
     UploadComponent,
     SearchComponent,
     VideoComponent,
-    RankingComponent
+    RankingComponent,
+    ProfileOtherBattlesComponent,
+    BookOtherComponent,
+    ProfileOtherVideosComponent,
+    ProfileOtherComponent
   ],
   imports: [
     BrowserModule,

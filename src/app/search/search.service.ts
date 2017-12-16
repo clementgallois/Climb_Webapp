@@ -24,4 +24,38 @@ export class SearchService {
     })
   }
 
+  likeVideo(video: any) {
+    let headers = new Headers();
+
+    headers.append('Content-Type', 'application/json');
+    headers.append('x-access-token', localStorage.getItem("token"));
+
+    return this._http
+      .post(
+        this.baseUrl + '/videos/' + video._id + '/like',
+        '',
+        { headers: headers }
+      )
+      .map(res => res.json())
+      .map((res) => {
+        return res;
+      });
+  }
+
+  unlikeVideo(video: any) {
+    let headers = new Headers();
+
+    headers.append('Content-Type', 'application/json');
+    headers.append('x-access-token', localStorage.getItem("token"));
+
+    return this._http
+      .delete(
+        this.baseUrl + '/videos/' + video._id + '/like',
+        { headers: headers }
+      )
+      .map(res => res.json())
+      .map((res) => {
+        return res;
+      });
+  }
 }

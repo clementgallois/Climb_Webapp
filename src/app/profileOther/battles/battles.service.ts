@@ -49,9 +49,10 @@ export class BattlesService {
       });
   }
 
-  getProfileBattles() {
+  getProfileBattles(username) {
     let headers = new Headers();
-    let username = localStorage.getItem("username");
+    if (username === undefined)
+      username = localStorage.getItem("username");
 
     headers.append('Content-Type', 'application/json');
     headers.append('x-access-token', localStorage.getItem("token"));
