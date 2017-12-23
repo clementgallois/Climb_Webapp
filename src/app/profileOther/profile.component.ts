@@ -49,12 +49,12 @@ export class ProfileOtherComponent {
   }
   follow() {
     this._service.follow(this.user).subscribe((result) => {
-      console.log(result)
+      window.location.reload();
     });
   }
   unfollow(){
     this._service.unfollow(this.user).subscribe((result) => {
-      console.log(result)
+      window.location.reload();
     });
   }
 }
