@@ -25,7 +25,7 @@
       <a href="#">
         0 Comments
       </a>
-      <img class="pull-right" src="../../assets/img/share.png" width="20" height="20">
+      <img (click)="share(video)" class="pull-right" src="../../assets/img/share.png" width="20" height="20">
       <img class="pull-right" src="../../assets/img/comment.png" style="margin-right:10px; color: #FFFFFF;" width="20" height="20">
       <img (click)="unlike(video)" *ngIf="video.isLiked == true" class="pull-right" src="../../assets/img/like.png" style="margin-right:10px;" width="20" height="20">
       <img (click)="like(video)" *ngIf="video.isLiked == false" class="pull-right" src="../../assets/img/unlike.png" style="margin-right:10px;" width="20" height="20">

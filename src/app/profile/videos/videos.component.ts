@@ -4,6 +4,8 @@ import { VideosService } from '../../videos/videos.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from '../../../environments/environment';
 
+declare var FB: any;
+
 @Component({
   selector: 'app-profile-videos',
   templateUrl: './videos.component.html',
@@ -16,7 +18,15 @@ private baseUrl = environment.apiUrl;
   private _http: Http,
    private el: ElementRef,
    private _videosService: VideosService,
-   private route: ActivatedRoute){}
+   private route: ActivatedRoute){
+     FB.init({
+       appId      : '1120118441421753',
+       cookie     : true,
+       xfbml      : true,
+       version    : 'v2.8'
+     });
+     FB.AppEvents.logPageView();
+   }
 
   private videos = [];
   private userProfilePicture = '';
@@ -58,6 +68,14 @@ private baseUrl = environment.apiUrl;
 
   challenge(video: any) {
     this.challengedVideoId = video._id;
+  }
+
+  share(video: any){
+    FB.ui({
+    method: 'share',
+    display: 'popup',
+    href: 'https://google.com',
+  }, function(response){});
   }
 
   submit() {

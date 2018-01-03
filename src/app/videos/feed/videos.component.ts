@@ -3,6 +3,8 @@ import { Http, Headers, Response } from '@angular/http';
 import { VideosService } from '../videos.service';
 import { environment } from '../../../environments/environment';
 
+declare var FB: any;
+
 @Component({
   selector: 'app-feed-videos',
   templateUrl: './videos.component.html',
@@ -10,7 +12,15 @@ import { environment } from '../../../environments/environment';
 })
 export class VideosFeedComponent implements AfterViewInit {
 
-  constructor(private _http: Http,private el: ElementRef,private _videosService: VideosService){}
+  constructor(private _http: Http,private el: ElementRef,private _videosService: VideosService){
+    FB.init({
+      appId      : '1120118441421753',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+    FB.AppEvents.logPageView();
+  }
 
   private baseUrl = environment.apiUrl;
   private videos = [];
@@ -45,6 +55,10 @@ export class VideosFeedComponent implements AfterViewInit {
 
   challenge(video: any) {
     this.challengedVideoId = video._id;
+  }
+
+  share(video: any){
+
   }
 
   submit() {

@@ -5,6 +5,8 @@ import { VideoService } from './video.service';
 import 'rxjs/add/operator/switchMap';
 import { environment } from '../../environments/environment';
 
+declare var FB: any;
+
 @Component({
   selector: 'app-video',
   templateUrl: './video.component.html',
@@ -15,7 +17,15 @@ import { environment } from '../../environments/environment';
 export class VideoComponent implements AfterViewInit {
 
   constructor(private _http: Http,private el: ElementRef,
-    private route: ActivatedRoute,private _videoService: VideoService){}
+    private route: ActivatedRoute,private _videoService: VideoService){
+      FB.init({
+        appId      : '1120118441421753',
+        cookie     : true,
+        xfbml      : true,
+        version    : 'v2.8'
+      });
+      FB.AppEvents.logPageView();
+    }
 
 private baseUrl = environment.apiUrl;
 private video;
@@ -53,6 +63,14 @@ private competitorVideoId;
 
   challenge(video: any) {
     this.challengedVideoId = video._id;
+  }
+
+  share(video: any) {
+    FB.ui({
+    method: 'share',
+    display: 'popup',
+    href: window.location.href,
+  }, function(response){});
   }
 
   submit() {
