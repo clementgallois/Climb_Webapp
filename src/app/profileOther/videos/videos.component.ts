@@ -1,47 +1,59 @@
-import { Component, AfterViewInit, ElementRef} from '@angular/core';
+import { Component, AfterViewInit, ElementRef } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
+import { VideosService } from '../../videos/videos.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { environment } from '../../environments/environment';
-import { SearchService } from './search.service';
-
-
-declare var jQuery:any;
+import { environment } from '../../../environments/environment';
 
 @Component({
-  selector : 'app-search',
-  templateUrl: './search.component.html',
-  providers: [SearchService],
+  selector: 'app-profile-videos',
+  templateUrl: './videos.component.html',
+  styleUrls: ['./videos.component.css']
 })
+export class ProfileOtherVideosComponent implements AfterViewInit {
 
-export class SearchComponent {
-  private baseUrl = environment.apiUrl;
-  private users = [];
+private baseUrl = environment.apiUrl;
+  constructor(private _router: Router,
+  private _http: Http,
+   private el: ElementRef,
+   private _videosService: VideosService,
+   private route: ActivatedRoute){}
+
   private videos = [];
+  private userProfilePicture = '';
+  private ownerUsername = '';
   private challengedVideoId;
   private competitorVideoId;
-  constructor(private _http: Http,private el: ElementRef, private _activateRoute: ActivatedRoute, private _searchService: SearchService, private router: Router){
-    this._activateRoute.params.subscribe(
-          (param: any) => {
-            this._searchService.search(param.value).subscribe((search) => {
-              this.users = search.users;
-              this.videos = search.videos;
-            });
+  private user;
+
+  ngAfterViewInit() {
+    this.route.parent.url.subscribe((urlPath) => this.user = urlPath[1].path)
+    this._videosService.getProfileVideos(this.user).subscribe((result) => {
+      if (result.success) {
+        this.videos = result.videos;
+      } else {
+        console.log(result)
+      }
     });
   }
+
   like(video: any) {
-    this._searchService.likeVideo(video).subscribe((result) => {
+    this._videosService.likeVideo(video).subscribe((result) => {
       if (result.success) {
         video.isLiked = true;
         video.likes += 1;
+      } else {
+        alert('Video like failed');
       }
     });
   }
 
   unlike(video: any) {
-    this._searchService.unlikeVideo(video).subscribe((result) => {
+    this._videosService.unlikeVideo(video).subscribe((result) => {
       if (result.success) {
         video.isLiked = false;
         video.likes -= 1;
+      } else {
+        alert('Video unlike failed');
       }
     });
   }
@@ -85,4 +97,5 @@ export class SearchComponent {
         }
 
       }
+
 }

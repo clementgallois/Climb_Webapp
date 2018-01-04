@@ -20,7 +20,7 @@ export class ProfileService {
       username = localStorage.getItem("username");
     headers.append('Content-Type', 'application/json');
     headers.append('x-access-token', localStorage.getItem("token"));
-
+    console.log(headers)
 
     return this._http
       .get(
@@ -40,8 +40,6 @@ export class ProfileService {
 
     headers.append('Content-Type', 'application/json');
     headers.append('x-access-token', localStorage.getItem("token"));
-
-
     return this._http
       .get(
         this.baseUrl + '/profile/' + username + '/videos',
@@ -53,4 +51,33 @@ export class ProfileService {
       });
   }
 
+  follow(username) {
+    let headers = new Headers();
+
+    headers.append('Content-Type', 'application/json');
+    headers.append('x-access-token', localStorage.getItem("token"));
+
+    return this._http.post(this.baseUrl + '/profile/follow/' + username,
+    {token: localStorage.getItem("token")})
+      .map(res => res.json())
+      .map((res) => {
+        return res;
+      });
+  }
+
+  unfollow(username) {
+    console.log('unfollow');
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('x-access-token', localStorage.getItem("token"));
+    return this._http
+      .delete(
+        this.baseUrl + '/profile/follow/' + username,
+        { headers: headers }
+      )
+      .map(res => res.json())
+      .map((res) => {
+        return res;
+      });
+    }
 }

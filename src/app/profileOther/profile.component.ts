@@ -5,10 +5,11 @@ import { ProfileService } from './profile.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
+  providers: [ProfileService]
 })
 
-export class ProfileComponent {
+export class ProfileOtherComponent {
 
   constructor(private _service: ProfileService, private router: Router, private route: ActivatedRoute){}
 
@@ -23,10 +24,11 @@ export class ProfileComponent {
   private bio = '';
   private isFollowing = false;
   private isOwner = false;
+  private user = this.route.snapshot.params["username"];
 
   ngAfterViewInit() {
-    console.log('params', this.route.snapshot.params)
-    this._service.getProfileData(this.route.snapshot.params["username"]).subscribe((result) => {
+
+    this._service.getProfileData(this.user).subscribe((result) => {
       if (result.success) {
         this.pictureProfil = result.user.profile.pictureUrl;
         this.firstName = result.user.profile.firstName;
@@ -41,8 +43,18 @@ export class ProfileComponent {
         this.isOwner = result.isOwner;
         this.isFollowing = result.isFollowing;
       } else {
-        alert("Authentification failed !");
+        console.log(result)
       }
+    });
+  }
+  follow() {
+    this._service.follow(this.user).subscribe((result) => {
+      window.location.reload();
+    });
+  }
+  unfollow(){
+    this._service.unfollow(this.user).subscribe((result) => {
+      window.location.reload();
     });
   }
 }
