@@ -29,6 +29,7 @@ export class VideoComponent implements AfterViewInit {
 
 private baseUrl = environment.apiUrl;
 private video;
+private comments;
 private challengedVideoId;
 private competitorVideoId;
 
@@ -38,6 +39,7 @@ private competitorVideoId;
     .subscribe((result) => {
       if (result.success) {
         this.video = result.video;
+        this.comments = result.comments;
         console.log("ici")
         console.log(this.video);
       }
