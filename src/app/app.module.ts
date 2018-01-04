@@ -10,6 +10,7 @@ import { VideosService } from './videos/videos.service';
 import { BattlesService } from './battles/battles.service';
 import { SearchService } from './search/search.service';
 import { RankingService } from './ranking/ranking.service';
+import { ChatService } from './chat/chat.service';
 
 
 import { AppComponent } from './app.component';
@@ -32,6 +33,7 @@ import { UploadComponent } from './upload/upload.component';
 import { VideoComponent } from './video/video.component';
 import { SearchComponent } from './search/search.component';
 import { RankingComponent } from './ranking/ranking.component';
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,8 @@ import { RankingComponent } from './ranking/ranking.component';
     UploadComponent,
     SearchComponent,
     VideoComponent,
-    RankingComponent
+    RankingComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +70,8 @@ import { RankingComponent } from './ranking/ranking.component';
     VideosService,
     RankingService,
     BattlesService,
-    SearchService
+    SearchService,
+    ChatService
   ],
   bootstrap: [AppComponent]
 })

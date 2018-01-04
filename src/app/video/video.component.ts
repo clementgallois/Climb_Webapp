@@ -28,6 +28,7 @@ private competitorVideoId;
     .subscribe((result) => {
       if (result.success) {
         this.video = result.video;
+        console.log("ici")
         console.log(this.video);
       }
     });
@@ -53,6 +54,27 @@ private competitorVideoId;
 
   challenge(video: any) {
     this.challengedVideoId = video._id;
+  }
+
+  postComment(){
+    let commentText = HTMLInputElement = this.el.nativeElement.querySelector('#commentText').value;
+    if (commentText != null){
+        const formData = {
+        'commentText': commentText,
+      };
+      let headers = new Headers();
+      headers.append('x-access-token', localStorage.getItem("token"));
+        headers.append('Content-Type', 'application/json');
+      console.log(this.baseUrl + "/videos/"+ this.video._id + '/comment')
+      this._http.post(this.baseUrl + "/videos/"+ this.video._id + '/comment', JSON.stringify(formData), { headers: headers })
+      .map((res:Response) => res.json()).subscribe(
+                                //map the success function and alert the response
+                                 (success) => {
+                                         window.location.reload();
+                                },
+                                (error) => alert("error"))
+    }
+
   }
 
   submit() {

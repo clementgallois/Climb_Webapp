@@ -31,6 +31,16 @@
   -webkit-border-radius: 50%;
   display: inline-block;
 }
+.panel.video .video-comment {
+  margin: 10px 10px 5px 10px;
+}
+.panel.video .video-comment img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  display: inline-block;
+}
 
 .panel.video .video-metadata a.title {
   color: #2B3440;

@@ -1,0 +1,49 @@
+<div class="container well border">
+  <div class="row">
+<div class="col-md-4">
+ <div class="well userlist ">
+  <div class="row-fluid user-row" *ngFor="let friend of friends" (click)="loadMessages(friend)">
+            <div class="col-md-4">
+                <img class="img-circle img-small"
+                     src="{{(friend.participant1._id !== userId ? friend.participant1.profile.pictureUrl: friend.participant2.profile.pictureUrl) || 
+                     'https://ui-avatars.com/api/?name='+ (friend.participant1._id !== userId ? friend.participant1.profile.username: friend.participant2.profile.username)}}"
+                     >
+            </div>
+            <div class="span8">
+                <strong>{{friend.participant1._id !== userId ? friend.participant1.profile.username: friend.participant2.profile.username}}</strong><br>
+                <span class="text-muted">message</span>
+            </div>
+            <div class="divider"></div>
+        </div>
+        </div></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="panel-body">
+            <ul class="chat">
+              <li class="left clearfix" *ngFor="let message of curentMessages" ><span class="chat-img pull-{{message.senderId._id !== userId ? 'left': 'right'}}">
+                <img src="{{message.senderId.profile.pictureUrl || 'https://ui-avatars.com/api/?name='+ message.senderId.profile.username}}" class="img-circle" />
+              </span>
+              <div class="chat-body clearfix">
+                <div class="header">
+                  <strong class="{{message.senderId._id !== userId ? '': 'pull-right'}} primary-font">{{message.senderId.profile.username}}</strong> 
+                </div>
+                <p>
+                  {{message.message}}
+                </p>
+              </div>
+            </li>
+      </ul>
+    </div>
+    <div class="panel-footer">
+      <form #form="ngForm" (submit)="postMessage(form.value)" class="input-group">
+        <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." id="message"/>
+        <span class="input-group-btn">
+          <button class="btn btn-warning btn-sm" id="btn-chat">
+            Send</button>
+          </span>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

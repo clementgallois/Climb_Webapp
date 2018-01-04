@@ -63,7 +63,7 @@
       "component": {},
     "serve": {
 	"port": 4200,
-	"host": "172.31.2.249"
+	"host": "localhost"
 
       }
   }

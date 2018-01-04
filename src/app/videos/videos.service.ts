@@ -28,6 +28,7 @@ export class VideosService {
       )
       .map(res => res.json())
       .map((res) => {
+        console.log(res);
         return res;
       });
   }
@@ -45,6 +46,7 @@ export class VideosService {
       )
       .map(res => res.json())
       .map((res) => {
+        console.log(res);
         return res;
       });
   }
@@ -64,6 +66,7 @@ export class VideosService {
       )
       .map(res => res.json())
       .map((res) => {
+        console.log(res);
         return res;
       });
   }
@@ -82,6 +85,7 @@ export class VideosService {
       )
       .map(res => res.json())
       .map((res) => {
+        console.log(res);
         return res;
       });
   }

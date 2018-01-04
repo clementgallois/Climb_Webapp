@@ -14,6 +14,7 @@ import { BookComponent } from './profile/book/book.component';
 import { SettingsProfileComponent } from './settings/profile/profile.component';
 import { ProfileBattlesComponent } from './profile/battles/battles.component';
 import { SearchComponent } from './search/search.component';
+import { ChatComponent } from './chat/chat.component';
 
 import { UploadComponent } from './upload/upload.component';
 import { RankingComponent } from './ranking/ranking.component';
@@ -42,6 +43,7 @@ const appRoutes: Routes = [
     ]},
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], children: [
       { path: 'videos', component: ProfileVideosComponent},
+      { path: 'messages', component: ChatComponent},
       { path: 'battles', component: ProfileBattlesComponent},
       { path: 'book', component: BookComponent }
     ]},

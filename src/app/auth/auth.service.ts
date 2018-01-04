@@ -48,6 +48,7 @@ export class AuthService {
                   if (res.success) {
                   localStorage.setItem('token', res.token);
                   localStorage.setItem('username', res.user.profile.username);
+                  localStorage.setItem('userId', res.user._id);
                   }
                 return res;
               });
@@ -77,6 +78,7 @@ export class AuthService {
         if (res.success) {
         localStorage.setItem('token', res.token);
         localStorage.setItem('username', res.user.profile.username);
+        localStorage.setItem('userId', res.user._id);
         }
       return res;
     });
@@ -85,6 +87,7 @@ export class AuthService {
   logout() {
     localStorage.removeItem("token");
     localStorage.removeItem("username");
+    localStorage.removeItem('userId');
   }
 
   login(email, password) {
@@ -102,6 +105,7 @@ export class AuthService {
         if (res.success) {
           localStorage.setItem('token', res.token);
           localStorage.setItem('username', res.user.profile.username);
+          localStorage.setItem('userId', res.user._id);
           this.loggedIn = true;
         }
 
