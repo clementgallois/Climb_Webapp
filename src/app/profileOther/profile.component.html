@@ -38,6 +38,10 @@
                   (click)="unfollow()" class="btn btn-default unfollow">
                   Unfollow
                 </a>
+                <a *ngIf="isOwner == false"
+                  (click)="message()" class="btn btn-default unfollow">
+                  Message
+                </a>
               </div>
               <ul class="nav nav-pills nav-stacked">
                 <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
