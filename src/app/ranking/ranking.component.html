@@ -12,7 +12,7 @@
 <td>{{i+1}}</td>
 <td>
 <a class="no_underline" href="#"><img class="avatar_image" src="{{user.pictureUrl}}" />
-</a><a href="#">{{user.username}}
+</a><a [routerLink]="['/profileOther', user.username, 'videos']">{{user.username}}
 </a></td>
 <td>{{user.count}}</td>
 </tr>

@@ -11,6 +11,7 @@ declare var jQuery:any;
   selector : 'app-search',
   templateUrl: './search.component.html',
   providers: [SearchService],
+  styleUrls: ['./search.component.css']
 })
 
 export class SearchComponent {

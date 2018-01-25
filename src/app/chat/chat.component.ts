@@ -41,7 +41,7 @@ export class ChatComponent implements OnInit{
     if (message != null){
         const formData = {
         'message': message,
-        'sendTo': (this.currentConv.participant1 !== this.userId ? this.currentConv.participant1._id: this.currentConv.participant2._id)
+        'sendTo': (this.currentConv.participant1._id !== this.userId ? this.currentConv.participant1._id: this.currentConv.participant2._id)
       };
       console.log(formData)
       let headers = new Headers();

@@ -19,7 +19,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-5">
-          <div class="panel-body">
+          <div class="panel-body" id="chatbox">
             <ul class="chat">
               <li class="left clearfix" *ngFor="let message of curentMessages" ><span class="chat-img pull-{{message.senderId._id !== userId ? 'left': 'right'}}">
                 <img src="{{message.senderId.profile.pictureUrl || 'https://ui-avatars.com/api/?name='+ message.senderId.profile.username}}" class="img-circle" />
@@ -35,6 +35,7 @@
             </li>
       </ul>
     </div>
+
     <div class="panel-footer">
       <form #form="ngForm" (submit)="postMessage(form.value)" class="input-group">
         <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." id="message"/>

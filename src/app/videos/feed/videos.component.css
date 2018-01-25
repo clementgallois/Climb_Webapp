@@ -10,6 +10,11 @@
   margin: 5px 10px 5px 10px;
 }
 
+.panel.video .video-content {
+  height:400px;
+  background-color: #000000;
+}
+
 .panel.video .video-heading a {
   color: #2B3440;
   margin: 5px 0 0 10px;

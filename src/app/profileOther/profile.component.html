@@ -39,7 +39,7 @@
                   Unfollow
                 </a>
                 <a *ngIf="isOwner == false"
-                  (click)="message()" class="btn btn-default unfollow">
+                  data-toggle="modal" data-target="#newMsg" class="btn btn-default unfollow">
                   Message
                 </a>
               </div>
@@ -64,4 +64,32 @@
         </div>
       </div>
     </div>
+      <div class="modal fade" id="newMsg" role="dialog">
+    <div class="modal-dialog">
+
+
+      <div class="modal-content">
+        <div class="modal-body">          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="text-left">New Message to:</h4>
+              <div class="message-heading">
+      <img src="{{pictureProfil}}">
+      <span>{{username}}</span>
+    </div>
+        <form #form="ngForm" (submit)="sendMsg()" class="form col-md-12 center-block">
+
+
+              <div class="form-group">
+              <label><b>Message:</b></label>
+              <textarea class="form-control" id="message" maxlength=255 placeholder="max 255 characters" name="message" style="text-align:left"></textarea>
+              </div>
+              <div class="text-center"><button type="button" (click)='sendMsg()' class="btn btn-success" data-dismiss="modal">Submit</button></div>
+      </form>
+        </div>
+
+        <div class="modal-footer">
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div><!--/.container-->

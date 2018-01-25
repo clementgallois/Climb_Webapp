@@ -2,10 +2,10 @@
   <div *ngIf="video" class="panel video">
     <div class="video-heading">
       <img src="{{video.ownerId.profile.pictureUrl}}">
-      <a [routerLink]="['/profile']">{{video.ownerId.profile.username}}</a>
+      <a [routerLink]="['/profileOther', video.ownerId.profile.username, 'videos']">{{video.ownerId.profile.username}}</a>
     </div>
     <div class="video-content">
-      <video class="img-responsive" controls="" width="100%" height="100%">
+      <video controls="" width="100%" height="100%">
         <source src="{{video.url}}" />
       </video>
     </div>
