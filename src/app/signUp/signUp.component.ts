@@ -27,6 +27,7 @@ export class SignUpComponent implements AfterViewInit {
                     ]
   public auth2: any;
 
+  private error;
 constructor(private _signUpService: SignUpService, private _route: ActivatedRoute, private _router: Router, private el: ElementRef){
   FB.init({
     appId      : '1120118441421753',
@@ -44,7 +45,7 @@ onFacebookLoginClick() {
         if (result.success) {
           this._router.navigateByUrl('/home/videos');
         } else {
-          alert("Registration failed !");
+            this.error = { message: 'La l\'inscription Facebook a échoué'};
         }
       });
     });
@@ -85,7 +86,7 @@ attachSignin(element) {
             this._router.navigateByUrl('/home/videos');
             //window.location.reload();
           } else {
-            alert("Registration failed !");
+            this.error = { message: 'La l\'inscription Google a éhoué'};
           }
         });
 
@@ -99,6 +100,8 @@ onSubmit(f: NgForm) {
     if (result.success) {
       this._router.navigateByUrl('/home/videos');
     } else {
+
+            this.error = { message: 'La l\'inscription a éhoué'};
       return;
     }
   });
