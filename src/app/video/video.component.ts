@@ -87,7 +87,9 @@ private competitorVideoId;
                                  (success) => {
                                          window.location.reload();
                                 },
-                                (error) => alert("error"))
+                                (error) => {
+                                   this.error = {message: "Failed to add comment"};
+                                })
     }
   }
 
@@ -133,7 +135,7 @@ private competitorVideoId;
                            this.loading=false;
                                 },
                                 (error) => {
-                                  
+
                     this.error = {message: "Failed adding video"};
                     this.loading=false;
                                 })
