@@ -12,7 +12,7 @@
       </video>
     </div>
     <div class="video-metadata">
-      <a class="title clickable" [routerLink]="['../video', video._id]">{{video.title}}</a>
+      <a class="title clickable" [routerLink]="['/video', video._id]">{{video.title}}</a>
       <p class="video-description">{{video.description}}</p>
       <div class="text-center"><button type="button" (click)="challenge(video)" name="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">Challenge !</button></div>
     </div>
@@ -48,7 +48,7 @@
         <div class="modal-body">
               <div class="form-group text-center">
                 <label class="btn btn-primary" for="video">
-                <input id="video" type="file" name="video" style="display:none"
+                <input id="video" type="file" name="video" accept="video/*" style="display:none"
                 onchange="$('#upload-file-info').html(this.files[0].name)">
                 Choose your file
                 </label>

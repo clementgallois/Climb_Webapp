@@ -42,6 +42,7 @@ export class UploadComponent {
                    (success) => {
                            this.success = {message: "Video added"};
                            this.loading=false;
+                           this._router.navigate(['/video', success.video._id ])
                   },
                   (error) => {
                     this.error = {message: "Failed adding video"};

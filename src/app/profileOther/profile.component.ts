@@ -41,6 +41,9 @@ export class ProfileOtherComponent {
 
     this._service.getProfileData(this.user).subscribe((result) => {
       if (result.success) {
+        if (result.isOwner){
+          this.router.navigateByUrl('/profile')
+        }
         console.log(result)
         this.pictureProfil = result.user.profile.pictureUrl;
         this.firstName = result.user.profile.firstName;

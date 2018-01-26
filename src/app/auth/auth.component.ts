@@ -20,6 +20,7 @@ export class AuthComponent implements AfterViewInit {
   public auth2: any;
 
   constructor(private _authService: AuthService, private _route: ActivatedRoute, private _router: Router, private el: ElementRef){
+    if (FB){
     FB.init({
       appId      : '1120118441421753',
       cookie     : true,
@@ -27,6 +28,7 @@ export class AuthComponent implements AfterViewInit {
       version    : 'v2.8'
     });
     FB.AppEvents.logPageView();
+  }
   }
 
   onFacebookLoginClick() {

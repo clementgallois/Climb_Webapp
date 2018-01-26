@@ -8,7 +8,13 @@
                     <div *ngIf='success' ng-class="{fade:doFade}" class="alert alert-success">{{success.message}}</div>
       <div class="profile-photo text-center">
         <label><b>Photo de profile:</b></label><br>
-        <a><img class="img-rounded" data-toggle="modal" data-target="#myModal" [src]="url" style="height:150px;width:150px;"></a>
+      <div class='img-upload'>
+          <label for="upload">
+            <img class="img-rounded" [src]="url" style="height:150px;width:150px;">
+          </label>
+
+           <input id="upload" type="file" accept="image/*" (change)="photoUpload($event)"/>
+        </div>
       </div>
       <form #form="ngForm" (ngSubmit)="onSubmit()">
       <div class="form-group text-center">
@@ -42,32 +48,3 @@
 
     </div>
   </div>
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog modal-sm">
-
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title text-center">Profile picture</h4>
-        </div>
-        <div class="modal-body">
-          <form class="photoForm">
-            <div class="text-center">
-              <label class="btn btn-primary text-center" for="upload">
-                <input type="file" id="upload" class="upload" (change)="photoUpload($event)" style="display:none"/>
-                Upload
-              </label>
-            </div>
-          </form>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>

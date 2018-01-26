@@ -39,8 +39,8 @@ const appRoutes: Routes = [
     { path: 'upload', component: UploadComponent },
     { path: 'ranking', component: RankingComponent },
     { path: 'search', component: SearchComponent },
+    { path: 'video/:id', component: VideoComponent },
     { path: 'home', component: HomeComponent, children: [
-      { path: 'video/:id', component: VideoComponent },
       { path: 'videos', component: VideosFeedComponent },
       { path: 'battles', component: BattlesFeedComponent },
       { path: 'news', component: NewsListComponent }

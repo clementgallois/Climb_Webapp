@@ -14,6 +14,12 @@ p {
   font-size: 14px;
 
 }
+#upload{
+  display: none;
+}
+.img-rounded{
+  cursor:pointer;
+}
 
 span.label {
   color: #56687F;

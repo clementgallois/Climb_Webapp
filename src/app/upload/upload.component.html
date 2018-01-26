@@ -5,7 +5,7 @@
 <form #form="ngForm" (submit)="submit(form.value)" class="form">
   <div class="form-group text-center">
     <label class="btn btn-primary" for="video">
-    <input id="video" type="file" name="video" style="display:none"
+    <input id="video" type="file" name="video" accept="video/*" style="display:none"
     onchange="$('#upload-file-info').html(this.files[0].name)">
     Choose your file
     </label>
