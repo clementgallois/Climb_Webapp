@@ -53,9 +53,6 @@ export class AuthService {
                 return res;
               });
             }
-            else {
-              alert("It seems that you didn't confirm the email address you use with Facebook :)")
-            }
   }
 
   googleHandler(googleUser) {

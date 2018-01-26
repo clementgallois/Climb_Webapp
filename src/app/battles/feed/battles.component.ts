@@ -10,6 +10,7 @@ import { BattlesService } from '../battles.service';
  export class BattlesFeedComponent {
    constructor(private _battlesService: BattlesService){}
 
+  private error;
   private battles = [];
 
   ngAfterViewInit() {
@@ -17,7 +18,7 @@ import { BattlesService } from '../battles.service';
       if (result.success) {
         this.battles = result.battles;
       } else {
-        alert('battles feed failed');
+            this.error = { message: 'Le chargement du feed battle a échoué'};
       }
     });
   }
@@ -46,7 +47,7 @@ import { BattlesService } from '../battles.service';
 
       	}
       } else {
-        alert('battle like failed');
+            this.error = { message: 'Votre vote n\'a pas pu etre pris en compte'};
       }
     });
   }
@@ -63,7 +64,7 @@ import { BattlesService } from '../battles.service';
       	battle.video_1.isVoted = false;
       	battle.video_2.isVoted = false;
       } else {
-        alert('battle unlike failed');
+            this.error = { message: 'Votre vote n\'a pas pu etre pris en compte'};
       }
     });
   }

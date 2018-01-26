@@ -18,6 +18,9 @@ private baseUrl = environment.apiUrl;
    private _videosService: VideosService,
    private route: ActivatedRoute){}
 
+  private error;
+  private success;
+  private loading;
   private videos = [];
   private userProfilePicture = '';
   private ownerUsername = '';
@@ -64,11 +67,14 @@ private baseUrl = environment.apiUrl;
 
   submit() {
 
+    this.error = null;
+    this.success = null;
     let video: HTMLInputElement = this.el.nativeElement.querySelector('#video').files.item(0);
   	let title: HTMLInputElement = this.el.nativeElement.querySelector('#title').value;
   	let description: HTMLInputElement = this.el.nativeElement.querySelector('#description').value;
   	let formData = new FormData();
   	if (video != null && title != null){
+      this.loading=true
   		formData.append('video', video);
   		formData.append('title', title);
   		if (description != null)
@@ -89,13 +95,22 @@ private baseUrl = environment.apiUrl;
                     .map((res:Response) => res.json()).subscribe(
                                 //map the success function and alert the response
                                  (success) => {
-                                         alert("success");
+                           this.success = {message: "Video added"};
+                           this.loading=false;
                                 },
-                                (error) => alert("error"))
-                  }(this.challengedVideoId, this._http, this.baseUrl),
+                                (error) => {
+                                
+                    this.error = {message: "Failed adding video"};
+                    this.loading=false;
+
+                                })
+                  }.bind(this)(this.challengedVideoId, this._http, this.baseUrl),
                 );
         }
 
+    else{
+     this.error = {message: "Fields title and video are required"};
+   }
       }
 
 }

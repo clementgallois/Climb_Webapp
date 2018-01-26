@@ -99,7 +99,7 @@ onSubmit(f: NgForm) {
     if (result.success) {
       this._router.navigateByUrl('/home/videos');
     } else {
-      alert("Registration failed !");
+      return;
     }
   });
 }
@@ -107,6 +107,14 @@ onSubmit(f: NgForm) {
 onGenderChange(gender) {
   this.gender = gender;
 }
+
+  ngOnDestroy() {
+      $.backstretch("destroy", false);
+      $('#myModal1 .close').click();
+      $('#myModal2 .close').click();
+      $("body").removeClass("modal-open");
+      $('.modal-backdrop').remove();
+  }
 
   ngAfterViewInit() {
 

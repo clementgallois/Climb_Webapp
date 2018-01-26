@@ -1,5 +1,6 @@
 <h1>Mes Battles</h1>
 <div class="battles">
+                    <div *ngIf='error' ng-class="{fade:doFade}" class="alert alert-danger"><strong>Erreur:</strong> {{error.message}}</div>
   <div *ngFor="let battle of battles" class="panel battle">
   <div class="video1">
 

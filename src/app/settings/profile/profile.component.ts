@@ -36,6 +36,9 @@ export class SettingsProfileComponent {
 
   private selectedValue = "";
 
+  private error;
+  private success;
+  private loading;
   private url = null;
   private isChanged = false;
   private photoFile = null;
@@ -75,7 +78,6 @@ constructor(private _service: ProfileService, private _http: Http,
 
   photoUpload(event) {
 
-    jQuery("#myModal").modal("hide");
     if (event.target.files && event.target.files[0]) {
         var reader = new FileReader();
 
@@ -109,9 +111,11 @@ constructor(private _service: ProfileService, private _http: Http,
       .map((res:Response) => res.json()).subscribe(
                   //map the success function and alert the response
                    (success) => {
-                           alert("success");
+                           this.success = {message: "Successfully updated profile"};
                   },
-                  (error) => alert("tendu"))
+                  (error) => {
+                    this.error = {message: "Could not update profile"};
+                  })
                 }
     if (userName != null && firstName != null && lastName != null) {
       const formData = {
@@ -129,9 +133,11 @@ constructor(private _service: ProfileService, private _http: Http,
         .map((res:Response) => res.json()).subscribe(
                     //map the success function and alert the response
                      (success) => {
-                             alert("success");
+                           this.success = {message: "Successfully updated profile"};
                     },
-                    (error) => alert("error"))
+                    (error) => {
+                    this.error = {message: "Could not update profile"};
+                  })
 
     }
   }

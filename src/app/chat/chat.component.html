@@ -1,4 +1,5 @@
-<div class="container well border">
+
+<div *ngIf='error' ng-class="{fade:doFade}" class="alert alert-danger"><strong>Erreur:</strong> {{error.message}}</div><div class="container well border">
   <div class="row">
 <div class="col-md-4">
  <div class="well userlist ">

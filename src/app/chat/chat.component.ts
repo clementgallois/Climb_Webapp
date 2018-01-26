@@ -24,6 +24,7 @@ export class ChatComponent implements OnInit{
   private userId = localStorage.getItem("userId");
   private friends = [];
 
+  private error;
   private currentConv = null;
   private curentMessages = [];
 
@@ -51,9 +52,12 @@ export class ChatComponent implements OnInit{
       .map((res) => res.json()).subscribe(
                                 //map the success function and alert the response
                                  (success) => {
-                                         console.log('success');//window.location.reload();
+                                         window.location.reload();
                                 },
-                                (error) => alert("error"))
+                                (error) => {
+                                  this.error = { message: 'L\'envois du message a échoué'};
+                                  return;
+                                })
     }
 
   }

@@ -4,6 +4,8 @@
       <h3 class="widget-caption">Profile</h3>
     </div>
     <div class="widget-body">
+                    <div *ngIf='error' ng-class="{fade:doFade}" class="alert alert-danger"><strong>Erreur:</strong> {{error.message}}</div>
+                    <div *ngIf='success' ng-class="{fade:doFade}" class="alert alert-success">{{success.message}}</div>
       <div class="profile-photo text-center">
         <label><b>Photo de profile:</b></label><br>
         <a><img class="img-rounded" data-toggle="modal" data-target="#myModal" [src]="url" style="height:150px;width:150px;"></a>

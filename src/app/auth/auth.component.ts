@@ -16,7 +16,7 @@ export class AuthComponent implements AfterViewInit {
   private email;
   private password;
   private returnUrl:string;
-
+  private error;
   public auth2: any;
 
   constructor(private _authService: AuthService, private _route: ActivatedRoute, private _router: Router, private el: ElementRef){
@@ -36,7 +36,7 @@ export class AuthComponent implements AfterViewInit {
           if (result.success) {
             this._router.navigateByUrl('/home/videos');
           } else {
-            alert("Registration failed !");
+            this.error = { message: 'La connexion Facebook a échoué'};
           }
         });
       });
@@ -75,12 +75,12 @@ export class AuthComponent implements AfterViewInit {
             if (result.success) {
               this._router.navigateByUrl('/home/videos');
             } else {
-              alert("Registration failed !");
+            this.error = { message: 'La connexion Google a échoué'};
             }
           });
 
       }, (error) => {
-        alert(JSON.stringify(error, undefined, 2));
+          this.error = { message: 'La connexion Google a échoué'};
       });
   }
 
@@ -102,16 +102,13 @@ export class AuthComponent implements AfterViewInit {
       if (result.success) {
         this._router.navigateByUrl('/home/videos');
       } else {
-        alert("Authentification failed !");
+            this.error = { message: 'La connexion a échoué, vérifiez vos identifiants et réessayez de nouveau'};
+            return;
       }
     });
   }
 
   ngOnDestroy() {
-      //$('#myModal1').destroy();
-      //$('#myModal2').destroy();
-      //$.backstretch();
-      //$(this.el.nativeElement).
       $.backstretch("destroy", false);
       $('#myModal1 .close').click();
       $('#myModal2 .close').click();
