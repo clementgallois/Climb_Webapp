@@ -11,10 +11,10 @@ export class ChatService {
 
 
   getConversations() {
-    let headers = new Headers();
+    const headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
-    headers.append('x-access-token', localStorage.getItem("token"));
+    headers.append('x-access-token', localStorage.getItem('token'));
 
     console.log(this.baseUrl + '/chat/')
     return this._http
@@ -31,10 +31,10 @@ export class ChatService {
   }
 
   getChat(convId) {
-    let headers = new Headers();
+    const headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
-    headers.append('x-access-token', localStorage.getItem("token"));
+    headers.append('x-access-token', localStorage.getItem('token'));
 
     return this._http
       .get(

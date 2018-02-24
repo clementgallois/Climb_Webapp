@@ -7,8 +7,8 @@ import { environment } from '../../environments/environment';
 import 'rxjs/add/operator/map';
 import localStorage from 'localStorage';
 
-declare var FB:any;
-declare var gapi:any;
+declare var FB: any;
+declare var gapi: any;
 
 @Injectable()
 export class SignUpService {
@@ -17,23 +17,23 @@ export class SignUpService {
 
   constructor(
     private _router: Router,
-    private _http: Http){}
+    private _http: Http) {}
 
     facebookHandler(response) {
             if (response.email) {
-              var name = response.name;
-              var firstName = response.first_name;
-              var last_name = response.last_name;
-              var pictureUrl = response.picture.data.url;
-              var gender = response.gender;
-              var email = response.email;
-              var route = "facebook";
-              let headers = new Headers();
+              let name = response.name;
+              const firstName = response.first_name;
+              const last_name = response.last_name;
+              const pictureUrl = response.picture.data.url;
+              const gender = response.gender;
+              const email = response.email;
+              const route = 'facebook';
+              const headers = new Headers();
               headers.append('Content-Type', 'application/json');
               name = name.split(' ').join('')
               return this._http.post(
                 this.baseUrl + '/register',
-                JSON.stringify({'name': name, 'firstName': firstName, 'lastName': last_name ,'email': email,
+                JSON.stringify({'name': name, 'firstName': firstName, 'lastName': last_name , 'email': email,
                 'pictureUrl': pictureUrl, 'gender': gender, 'route': route}),
                  {headers}
                 ).map(res => res.json())
@@ -48,13 +48,13 @@ export class SignUpService {
   }
 
   googleHandler(googleUser) {
-    let profile = googleUser.getBasicProfile();
+    const profile = googleUser.getBasicProfile();
 
-    var name = profile.getName();
-    var email = profile.getEmail();
-    var pictureUrl = profile.getImageUrl();
-    var route = 'google';
-    let headers = new Headers();
+    let name = profile.getName();
+    const email = profile.getEmail();
+    const pictureUrl = profile.getImageUrl();
+    const route = 'google';
+    const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     name = name.split(' ').join('')
     return this._http.post(
@@ -73,7 +73,7 @@ export class SignUpService {
 }
 
     signUp(username, email, password, confirmPassword, gender) {
-      let headers = new Headers();
+      const headers = new Headers();
       headers.append('Content-Type', 'application/json');
 
       return this._http.post(
@@ -85,12 +85,12 @@ export class SignUpService {
         if (res.success) {
           localStorage.setItem('token', res.token);
           localStorage.setItem('username', res.user.profile.username);
-          let headers = new Headers();
-          headers.append('x-access-token', localStorage.getItem("token"));
-          headers.append('Content-Type', 'application/json');
-          this._http.put(this.baseUrl + "/profile", JSON.stringify({ 'gender': gender }), { headers: headers })
-          .map((res) => res.json()).subscribe(
-                      //map the success function and alert the response
+          const header = new Headers();
+          header.append('x-access-token', localStorage.getItem('token'));
+          header.append('Content-Type', 'application/json');
+          this._http.put(this.baseUrl + '/profile', JSON.stringify({ 'gender': gender }), { headers: headers })
+          .map((response) => response.json()).subscribe(
+                      // map the success function and alert the response
                        (success) => {
                       })
         }

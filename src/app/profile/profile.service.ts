@@ -12,15 +12,16 @@ export class ProfileService {
   private baseUrl = environment.apiUrl;
 
   constructor(
-    private _http: Http){}
+    private _http: Http) {}
 
   getProfileData(username) {
-    let headers = new Headers();
-    if (username === undefined)
-      username = localStorage.getItem("username");
+    const headers = new Headers();
+    if (username === undefined) {
+      username = localStorage.getItem('username');
+    }
     headers.append('Content-Type', 'application/json');
-    headers.append('x-access-token', localStorage.getItem("token"));
-
+    headers.append('x-access-token', localStorage.getItem('token'));
+    console.log(headers)
 
     return this._http
       .get(
@@ -34,14 +35,13 @@ export class ProfileService {
   }
 
   getProfileVideos(username) {
-    let headers = new Headers();
-    if (username === undefined)
-      username = localStorage.getItem("username");
+    const headers = new Headers();
+    if (username === undefined) {
+      username = localStorage.getItem('username');
+    }
 
     headers.append('Content-Type', 'application/json');
-    headers.append('x-access-token', localStorage.getItem("token"));
-
-
+    headers.append('x-access-token', localStorage.getItem('token'));
     return this._http
       .get(
         this.baseUrl + '/profile/' + username + '/videos',
@@ -53,4 +53,33 @@ export class ProfileService {
       });
   }
 
+  follow(username) {
+    const headers = new Headers();
+
+    headers.append('Content-Type', 'application/json');
+    headers.append('x-access-token', localStorage.getItem('token'));
+
+    return this._http.post(this.baseUrl + '/profile/follow/' + username,
+    {token: localStorage.getItem('token')})
+      .map(res => res.json())
+      .map((res) => {
+        return res;
+      });
+  }
+
+  unfollow(username) {
+    console.log('unfollow');
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('x-access-token', localStorage.getItem('token'));
+    return this._http
+      .delete(
+        this.baseUrl + '/profile/follow/' + username,
+        { headers: headers }
+      )
+      .map(res => res.json())
+      .map((res) => {
+        return res;
+      });
+    }
 }

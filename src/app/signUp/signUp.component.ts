@@ -1,19 +1,19 @@
-import { Component, AfterViewInit, ElementRef, OnDestroy } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 import { SignUpService } from './signUp.service';
 import {NgForm} from '@angular/forms';
 
-declare var $:any;
-declare var gapi:any;
-declare var FB:any;
+declare var $: any;
+declare var gapi: any;
+declare var FB: any;
 
 @Component({
-  selector : 'app-signUp',
+  selector : 'app-sign-up',
   templateUrl: './signUp.component.html',
   providers: [SignUpService]
 })
 
-export class SignUpComponent implements AfterViewInit {
+export class SignUpComponent implements AfterViewInit, OnInit, OnDestroy {
 
   private username;
   private confirmPassword;
@@ -21,14 +21,14 @@ export class SignUpComponent implements AfterViewInit {
   private password;
   private gender;
 
-  public genders = [{"label": "Male", "name": "male"},
-                    {"label": "Female", "name": "female"},
-                    {"label": "Other", "name": "other"}
+  public genders = [{'label': 'Male', 'name': 'male'},
+                    {'label': 'Female', 'name': 'female'},
+                    {'label': 'Other', 'name': 'other'}
                     ]
   public auth2: any;
 
   private error;
-constructor(private _signUpService: SignUpService, private _route: ActivatedRoute, private _router: Router, private el: ElementRef){
+constructor(private _signUpService: SignUpService, private _route: ActivatedRoute, private _router: Router, private el: ElementRef) {
   FB.init({
     appId      : '1120118441421753',
     cookie     : true,
@@ -40,8 +40,8 @@ constructor(private _signUpService: SignUpService, private _route: ActivatedRout
 
 onFacebookLoginClick() {
   FB.login((response) => {
-    FB.api('/me', {fields: 'name,first_name,last_name,email,gender,picture'}, (response) => {
-      this._signUpService.facebookHandler(response).subscribe((result) => {
+    FB.api('/me', {fields: 'name,first_name,last_name,email,gender,picture'}, (resp) => {
+      this._signUpService.facebookHandler(resp).subscribe((result) => {
         if (result.success) {
           this._router.navigateByUrl('/home/videos');
         } else {
@@ -49,7 +49,7 @@ onFacebookLoginClick() {
         }
       });
     });
-  },{scope: 'email'});
+  }, {scope: 'email'});
 }
 
 onFacebookLogout() {
@@ -84,7 +84,7 @@ attachSignin(element) {
         this._signUpService.googleHandler(googleUser).subscribe((result) => {
           if (result.success) {
             this._router.navigateByUrl('/home/videos');
-            //window.location.reload();
+            // window.location.reload();
           } else {
             this.error = { message: 'La l\'inscription Google a éhoué'};
           }
@@ -112,10 +112,10 @@ onGenderChange(gender) {
 }
 
   ngOnDestroy() {
-      $.backstretch("destroy", false);
+      $.backstretch('destroy', false);
       $('#myModal1 .close').click();
       $('#myModal2 .close').click();
-      $("body").removeClass("modal-open");
+      $('body').removeClass('modal-open');
       $('.modal-backdrop').remove();
   }
 
@@ -127,22 +127,22 @@ onGenderChange(gender) {
 
     $.backstretch([
       [
-        { "width": 1280, "fade": 4000, "url": "../../assets/img/index/dance-1_1920.jpg" },
-        { "width": 960, "fade": 4000, "url": "../../assets/img/index/dance-1_1920.jpg" },
-        { "width": 480, "fade": 4000, "url": "../../assets/img/index/dance-1_1920.jpg" },
-        { "width": 0, "fade": 4000, "url": "../../assets/img/index/dance-1_1920.jpg" }
+        { 'width': 1280, 'fade': 4000, 'url': '../../assets/img/index/dance-1_1920.jpg' },
+        { 'width': 960, 'fade': 4000, 'url': '../../assets/img/index/dance-1_1920.jpg' },
+        { 'width': 480, 'fade': 4000, 'url': '../../assets/img/index/dance-1_1920.jpg' },
+        { 'width': 0, 'fade': 4000, 'url': '../../assets/img/index/dance-1_1920.jpg' }
       ],
       [
-        { "width": 1280, "fade": 4000, "url": "../../assets/img/index/dance-3_1920.jpg" },
-        { "width": 960, "fade": 4000, "url": "../../assets/img/index/dance-3_1280.jpg" },
-        { "width": 480, "fade": 4000, "url": "../../assets/img/index/dance-3_480.jpg" },
-        { "width": 0, "fade": 4000, "url": "../../assets/img/index/dance-3_480.jpg" }
+        { 'width': 1280, 'fade': 4000, 'url': '../../assets/img/index/dance-3_1920.jpg' },
+        { 'width': 960, 'fade': 4000, 'url': '../../assets/img/index/dance-3_1280.jpg' },
+        { 'width': 480, 'fade': 4000, 'url': '../../assets/img/index/dance-3_480.jpg' },
+        { 'width': 0, 'fade': 4000, 'url': '../../assets/img/index/dance-3_480.jpg' }
       ],
       [
-        { "width": 1280, "fade": 4000, "url": "../../assets/img/index/instrumental-1_1920.jpg" },
-        { "width": 960, "fade": 4000, "url": "../../assets/img/index/instrumental-1_1280.jpg" },
-        { "width": 480, "fade": 4000, "url": "../../assets/img/index/instrumental-1_480.jpg" },
-        { "width": 0, "fade": 4000, "url": "../../assets/img/index/instrumental-1_480.jpg" }
+        { 'width': 1280, 'fade': 4000, 'url': '../../assets/img/index/instrumental-1_1920.jpg' },
+        { 'width': 960, 'fade': 4000, 'url': '../../assets/img/index/instrumental-1_1280.jpg' },
+        { 'width': 480, 'fade': 4000, 'url': '../../assets/img/index/instrumental-1_480.jpg' },
+        { 'width': 0, 'fade': 4000, 'url': '../../assets/img/index/instrumental-1_480.jpg' }
       ]
     ]);
     $('#myModal1').on('shown.bs.modal', function() {

@@ -1,0 +1,14 @@
+{
+  "extends": ["angular"],
+  "rules":{
+        "max-len": ["error",
+      {
+        "code":120,
+        "tabWidth": 2,
+        "ignoreRegExpLiterals": true,
+        "ignoreUrls": true
+      }
+    ],
+
+    }
+}

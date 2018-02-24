@@ -10,12 +10,12 @@ import localStorage from 'localStorage';
 export class SearchService {
   private baseUrl = environment.apiUrl;
 
-  constructor(private _http: Http){
+  constructor(private _http: Http) {
   }
 
   search(value) {
     const headers = new Headers();
-    headers.append('x-access-token', localStorage.getItem("token"));
+    headers.append('x-access-token', localStorage.getItem('token'));
     headers.append('Content-Type', 'application/json');
     return this._http.post(this.baseUrl + '/search', JSON.stringify({'search': value}), {headers})
     .map(res => res.json())
@@ -25,10 +25,10 @@ export class SearchService {
   }
 
   likeVideo(video: any) {
-    let headers = new Headers();
+    const headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
-    headers.append('x-access-token', localStorage.getItem("token"));
+    headers.append('x-access-token', localStorage.getItem('token'));
 
     return this._http
       .post(
@@ -43,10 +43,10 @@ export class SearchService {
   }
 
   unlikeVideo(video: any) {
-    let headers = new Headers();
+    const headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
-    headers.append('x-access-token', localStorage.getItem("token"));
+    headers.append('x-access-token', localStorage.getItem('token'));
 
     return this._http
       .delete(

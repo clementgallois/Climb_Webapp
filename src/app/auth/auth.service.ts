@@ -13,8 +13,8 @@ export class User {
     public password: string) { }
 }
 
-declare var FB:any;
-declare var gapi:any;
+declare var FB: any;
+declare var gapi: any;
 
 @Injectable()
 export class AuthService {
@@ -24,23 +24,23 @@ export class AuthService {
 
   constructor(
     private _router: Router,
-    private _http: Http){}
+    private _http: Http) {}
 
     facebookHandler(response) {
             if (response.email) {
-              var name = response.name;
-              var firstName = response.first_name;
-              var last_name = response.last_name;
-              var pictureUrl = response.picture.data.url;
-              var gender = response.gender;
-              var email = response.email;
-              var route = "facebook";
-              let headers = new Headers();
+              let name = response.name;
+              const firstName = response.first_name;
+              const last_name = response.last_name;
+              const pictureUrl = response.picture.data.url;
+              const gender = response.gender;
+              const email = response.email;
+              const route = 'facebook';
+              const headers = new Headers();
               headers.append('Content-Type', 'application/json');
-              name = name.split(' ').join('')
+              name = name.split(' ').join('');
               return this._http.post(
                 this.baseUrl + '/register',
-                JSON.stringify({'name': name, 'firstName': firstName, 'lastName': last_name ,'email': email,
+                JSON.stringify({'name': name, 'firstName': firstName, 'lastName': last_name , 'email': email,
                 'pictureUrl': pictureUrl, 'gender': gender, 'route': route}),
                  {headers}
                 ).map(res => res.json())
@@ -56,15 +56,15 @@ export class AuthService {
   }
 
   googleHandler(googleUser) {
-    let profile = googleUser.getBasicProfile();
-    var name = profile.getName();
-    var email = profile.getEmail();
-    var pictureUrl = profile.getImageUrl();
-    var route = 'google';
+    const profile = googleUser.getBasicProfile();
+    let name = profile.getName();
+    const email = profile.getEmail();
+    const pictureUrl = profile.getImageUrl();
+    const route = 'google';
 
-    let headers = new Headers();
+    const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    name = name.split(' ').join('')
+    name = name.split(' ').join('');
     return this._http.post(
       this.baseUrl + '/register',
       JSON.stringify({'name': name, 'email': email,
@@ -82,13 +82,13 @@ export class AuthService {
 }
 
   logout() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("username");
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
     localStorage.removeItem('userId');
   }
 
   login(email, password) {
-    let headers = new Headers();
+    const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
     return this._http
@@ -115,7 +115,7 @@ export class AuthService {
   }
 
    checkCredentials() {
-    if (localStorage.getItem("token") === null){
+    if (localStorage.getItem('token') === null) {
         this.loggedIn = false;
         this._router.navigate(['login']);
     }

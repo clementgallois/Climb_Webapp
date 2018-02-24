@@ -12,14 +12,14 @@ export class RankingService {
   private baseUrl = environment.apiUrl;
 
   constructor(
-    private _http: Http){}
+    private _http: Http) {}
 
   getRankingLikes() {
-    let headers = new Headers();
-    let username = localStorage.getItem("username");
+    const headers = new Headers();
+    const username = localStorage.getItem('username');
 
     headers.append('Content-Type', 'application/json');
-    headers.append('x-access-token', localStorage.getItem("token"));
+    headers.append('x-access-token', localStorage.getItem('token'));
 
 
     return this._http
