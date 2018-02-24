@@ -7,44 +7,14 @@
         <div class="row">
           <div *ngFor="let user of users" class="col-sm-6">
             <img style="width: 70px; heigth: 70px;" src="{{user.profile.pictureUrl}}">
-            <a [routerLink]="['/profileOther', user.profile.username, 'videos']">{{user.profile.username}}</a>
+            <a [routerLink]="['/profile', user.profile.username, 'videos']">{{user.profile.username}}</a>
           </div>
         </div>
       </div>
       <div class="divider"></div>
       <div class="videos">
         <h4 class="widget-caption">Videos:</h4>
-        <div *ngFor="let video of videos" class="panel video">
-          <div class="video-heading">
-            <img src="{{video.ownerId.profile.pictureUrl}}" width="50px" height="50px">
-            <a [routerLink]="['/profileOther', video.ownerId.profile.username, 'videos']">{{video.ownerId.profile.username}}</a>
-            <span class="video-category">{{video.category && ''}}</span>
-          </div>
-          <div class="video-content">
-            <video controls="" width="100%" height="100%">
-              <source src="{{video.url}}" />
-            </video>
-          </div>
-          <div class="video-metadata">
-            <a class="title clickable" [routerLink]="['/home/video', video._id]">{{video.title}}</a>
-            <p class="video-description">{{video.description}}</p>
-            <div class="text-center"><button type="button" (click)="challenge(video)" name="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">Challenge !</button></div>
-          </div>
-          <div class="divider">
-          </div>
-          <div class="video-footer">
-            <a href="#">
-              {{video.likes}} Likes
-            </a>
-            <a href="#">
-              0 Comments
-            </a>
-            <img class="pull-right" src="../../assets/img/share.png" width="20" height="20">
-            <img class="pull-right" src="../../assets/img/comment.png" style="margin-right:10px; color: #FFFFFF;" width="20" height="20">
-            <img (click)="unlike(video)" *ngIf="video.isLiked == true" class="pull-right" src="../../assets/img/like.png" style="margin-right:10px;" width="20" height="20">
-            <img (click)="like(video)" *ngIf="video.isLiked == false" class="pull-right" src="../../assets/img/unlike.png" style="margin-right:10px;" width="20" height="20">
-          </div>
-        </div>
+        <app-video *ngFor="let video of videos" [video]="video"></app-video>
 
         <div class="modal fade" id="myModal" role="dialog">
           <div class="modal-dialog">

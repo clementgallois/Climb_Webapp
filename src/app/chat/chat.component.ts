@@ -3,7 +3,7 @@ import { Http, Headers } from '@angular/http';
 import { ChatService } from './chat.service';
 import { environment } from '../../environments/environment';
 import 'rxjs/add/operator/map';
-//import * as io from "socket.io-client";
+// import * as io from "socket.io-client";
 
 import localStorage from 'localStorage';
 
@@ -13,44 +13,46 @@ import localStorage from 'localStorage';
   styleUrls: ['./chat.component.css'],
   providers: [ChatService],
 })
-export class ChatComponent implements OnInit{
+export class ChatComponent implements OnInit {
 
   private baseUrl = environment.apiUrl;
   convs: any;
-  //socket = io('http://localhost:8080');
-
-  constructor(private chatService: ChatService, private el: ElementRef, private _http: Http) {}
-
-  private userId = localStorage.getItem("userId");
+  // socket = io('http://localhost:8080');
+  private userId = localStorage.getItem('userId');
   private friends = [];
 
   private error;
   private currentConv = null;
   private curentMessages = [];
+  constructor(private chatService: ChatService, private el: ElementRef, private _http: Http) {}
+
+
 
   ngOnInit() {
     this.chatService.getConversations().subscribe((result) => { this.friends = result});
   }
 
-  public async loadMessages(convId){
+  public async loadMessages(convId) {
     this.currentConv = convId;
-    await this.chatService.getChat(convId._id).subscribe((result) => { this.curentMessages = result.messages;});
+    await this.chatService.getChat(convId._id).subscribe((result) => { this.curentMessages = result.messages; });
   }
 
-  postMessage(){
-    let message = HTMLInputElement = this.el.nativeElement.querySelector('#message').value;
-    if (message != null){
+  postMessage() {
+    const message = HTMLInputElement = this.el.nativeElement.querySelector('#message').value;
+    if (message != null) {
         const formData = {
         'message': message,
-        'sendTo': (this.currentConv.participant1._id !== this.userId ? this.currentConv.participant1._id: this.currentConv.participant2._id)
+        'sendTo': (this.currentConv.participant1._id !== this.userId ?
+                    this.currentConv.participant1._id :
+                    this.currentConv.participant2._id)
       };
       console.log(formData)
-      let headers = new Headers();
-      headers.append('x-access-token', localStorage.getItem("token"));
+      const headers = new Headers();
+      headers.append('x-access-token', localStorage.getItem('token'));
       headers.append('Content-Type', 'application/json');
-      this._http.post(this.baseUrl + "/chat/", JSON.stringify(formData), { headers: headers })
+      this._http.post(this.baseUrl + '/chat/', JSON.stringify(formData), { headers: headers })
       .map((res) => res.json()).subscribe(
-                                //map the success function and alert the response
+                                // map the success function and alert the response
                                  (success) => {
                                          window.location.reload();
                                 },

@@ -30,23 +30,29 @@
                     </a>
                   </li>
                 </ul>
-                <a *ngIf="isFollowing == false && isOwner == false" href="#" class="btn btn-default follow">
+                <a *ngIf="isFollowing == false && isOwner == false"
+                  (click)="follow()" class="btn btn-default follow">
                   Follow
                 </a>
-                <a *ngIf="isFollowing == true && isOwner == false" href="#" class="btn btn-default unfollow">
+                <a *ngIf="isFollowing == true && isOwner == false"
+                  (click)="unfollow()" class="btn btn-default unfollow">
                   Unfollow
+                </a>
+                <a *ngIf="isOwner == false"
+                  data-toggle="modal" data-target="#newMsg" class="btn btn-default unfollow">
+                  Message
                 </a>
               </div>
               <ul class="nav nav-pills nav-stacked">
                 <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-                  <a routerLink="/profile/videos">
+                  <a [routerLink]="['videos']">
                     <i class="fa fa-video-camera"></i>
                     Videos</a>
                 </li>
                 <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-                  <a routerLink="/profile/battles">
+                  <a [routerLink]="['battles']">
                     <i class="fa fa-bolt"></i>
-                    Mes battles
+                    Battles
                   </a>
                 </li>
               </ul>
@@ -58,4 +64,32 @@
         </div>
       </div>
     </div>
+      <div class="modal fade" id="newMsg" role="dialog">
+    <div class="modal-dialog">
+
+
+      <div class="modal-content">
+        <div class="modal-body">          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="text-left">New Message to:</h4>
+              <div class="message-heading">
+      <img src="{{pictureProfil}}">
+      <span>{{username}}</span>
+    </div>
+        <form #form="ngForm" (submit)="sendMsg()" class="form col-md-12 center-block">
+
+
+              <div class="form-group">
+              <label><b>Message:</b></label>
+              <textarea class="form-control" id="message" maxlength=255 placeholder="max 255 characters" name="message" style="text-align:left"></textarea>
+              </div>
+              <div class="text-center"><button type="button" (click)='sendMsg()' class="btn btn-success" data-dismiss="modal">Submit</button></div>
+      </form>
+        </div>
+
+        <div class="modal-footer">
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div><!--/.container-->

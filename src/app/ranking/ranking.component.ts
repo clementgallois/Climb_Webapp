@@ -8,19 +8,18 @@ import { RankingService } from './ranking.service';
 })
 export class RankingComponent implements AfterViewInit {
 
-  constructor(private _rankingService: RankingService){}
+    private ranking = [];
+  constructor(private _rankingService: RankingService) {}
 
-  private ranking = [];
 
   ngAfterViewInit() {
-   	this._rankingService.getRankingLikes().subscribe((result) => {
-     	if (result.success) {
-       		this.ranking = result.likes;
-      	}
-      	else {
-       	 alert('Videos feed failed');
-      	}
+     this._rankingService.getRankingLikes().subscribe((result) => {
+       if (result.success) {
+           this.ranking = result.likes;
+        } else {
+          alert('Videos feed failed');
+        }
     });
-	}
+  }
 
 }

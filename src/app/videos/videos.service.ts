@@ -12,13 +12,13 @@ export class VideosService {
   private baseUrl = environment.apiUrl;
 
   constructor(
-    private _http: Http){}
+    private _http: Http) {}
 
   likeVideo(video: any) {
-    let headers = new Headers();
+    const headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
-    headers.append('x-access-token', localStorage.getItem("token"));
+    headers.append('x-access-token', localStorage.getItem('token'));
 
     return this._http
       .post(
@@ -34,10 +34,10 @@ export class VideosService {
   }
 
   unlikeVideo(video: any) {
-    let headers = new Headers();
+    const headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
-    headers.append('x-access-token', localStorage.getItem("token"));
+    headers.append('x-access-token', localStorage.getItem('token'));
 
     return this._http
       .delete(
@@ -52,11 +52,12 @@ export class VideosService {
   }
 
   getProfileVideos(username) {
-    let headers = new Headers();
-    if (username === undefined)
-      username = localStorage.getItem("username");
+    const headers = new Headers();
+    if (username === undefined) {
+      username = localStorage.getItem('username');
+    }
     headers.append('Content-Type', 'application/json');
-    headers.append('x-access-token', localStorage.getItem("token"));
+    headers.append('x-access-token', localStorage.getItem('token'));
 
 
     return this._http
@@ -72,10 +73,10 @@ export class VideosService {
   }
 
   getFeedVideos() {
-    let headers = new Headers();
+    const headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
-    headers.append('x-access-token', localStorage.getItem("token"));
+    headers.append('x-access-token', localStorage.getItem('token'));
 
 
     return this._http

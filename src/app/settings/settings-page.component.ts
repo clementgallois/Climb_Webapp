@@ -12,13 +12,13 @@ import { AuthService } from '../auth/auth.service';
 
 export class SettingsComponent {
 
-  constructor(private _authService: AuthService, private _router: Router, private _profileService: ProfileService){
+  constructor(private _authService: AuthService, private _router: Router, private _profileService: ProfileService) {
 
   }
 
-  ngAfterViewInit() {
-
-  }
+  // ngAfterViewInit() {
+  //
+  // }
 
   logout() {
     this._authService.logout();

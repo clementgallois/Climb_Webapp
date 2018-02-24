@@ -5,7 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import {NgForm} from '@angular/forms';
 import { environment } from '../../../environments/environment';
 
-declare var jQuery:any;
+declare var jQuery: any;
 
 @Component({
   selector : 'app-settings-profile',
@@ -13,7 +13,7 @@ declare var jQuery:any;
   styleUrls: ['./profile.component.css']
 })
 
-export class SettingsProfileComponent {
+export class SettingsProfileComponent implements AfterViewInit {
 
   private baseUrl = environment.apiUrl;
   public user = {
@@ -29,12 +29,12 @@ export class SettingsProfileComponent {
     }
   };
 
-  public genders = [{"label": "Male", "name": "male"},
-                    {"label": "Female", "name": "female"},
-                    {"label": "Other", "name": "other"}
+  public genders = [{'label': 'Male', 'name': 'male'},
+                    {'label': 'Female', 'name': 'female'},
+                    {'label': 'Other', 'name': 'other'}
                     ]
 
-  private selectedValue = "";
+  private selectedValue = '';
 
   private error;
   private success;
@@ -44,17 +44,17 @@ export class SettingsProfileComponent {
   private photoFile = null;
 
 constructor(private _service: ProfileService, private _http: Http,
-  private router: Router,  private el: ElementRef, private route: ActivatedRoute){
+  private router: Router,  private el: ElementRef, private route: ActivatedRoute) {
 }
 
   ngAfterViewInit() {
-    this._service.getProfileData(this.route.snapshot.params["username"]).subscribe((result) => {
+    this._service.getProfileData(this.route.snapshot.params['username']).subscribe((result) => {
       if (result.success) {
         this.user = result.user;
         this.selectedValue = this.user.profile.gender;
         this.url = this.user.profile.pictureUrl;
       } else {
-        alert("Authentification failed !");
+        alert('Authentification failed !');
       }
     });
   }
@@ -64,25 +64,25 @@ constructor(private _service: ProfileService, private _http: Http,
   }
 
   openNav() {
-    document.getElementById("myNav").style.height = "100%";
+    document.getElementById('myNav').style.height = '100%';
 }
 
 /* Close when someone clicks on the "x" symbol inside the overlay */
   closeNav() {
-    document.getElementById("myNav").style.height = "0%";
+    document.getElementById('myNav').style.height = '0%';
   }
 
   photoDelete() {
-    alert("Delete !");
+    alert('Delete !');
   }
 
   photoUpload(event) {
 
     if (event.target.files && event.target.files[0]) {
-        var reader = new FileReader();
+        const reader = new FileReader();
 
-          reader.onload = (event:any) => {
-              this.url = event.target.result;
+          reader.onload = (e: any) => {
+              this.url = e.target.result;
             }
 
           reader.readAsDataURL(event.target.files[0]);
@@ -100,21 +100,21 @@ constructor(private _service: ProfileService, private _http: Http,
     const gender = this.selectedValue;
     const bio = this.user.profile.bio;
 
-    if(this.isChanged == true) {
-      let headers = new Headers();
-      let picture = new FormData();
+    if (this.isChanged === true) {
+      const headers = new Headers();
+      const picture = new FormData();
 
       picture.append('image', this.photoFile)
-      headers.append('x-access-token', localStorage.getItem("token"));
-      //headers.append('Content-Type', 'multipart/form-data');
-      this._http.post(this.baseUrl + "/profile/me/upload", picture, {headers: headers})
-      .map((res:Response) => res.json()).subscribe(
-                  //map the success function and alert the response
+      headers.append('x-access-token', localStorage.getItem('token'));
+      // headers.append('Content-Type', 'multipart/form-data');
+      this._http.post(this.baseUrl + '/profile/me/upload', picture, {headers: headers})
+      .map((res: Response) => res.json()).subscribe(
+                  // map the success function and alert the response
                    (success) => {
-                           this.success = {message: "Successfully updated profile"};
+                           this.success = {message: 'Successfully updated profile'};
                   },
                   (error) => {
-                    this.error = {message: "Could not update profile"};
+                    this.error = {message: 'Could not update profile'};
                   })
                 }
     if (userName != null && firstName != null && lastName != null) {
@@ -125,18 +125,18 @@ constructor(private _service: ProfileService, private _http: Http,
         'gender': gender,
         'bio': bio
       };
-      let headers = new Headers();
+      const headers = new Headers();
 
-      	headers.append('x-access-token', localStorage.getItem("token"));
+        headers.append('x-access-token', localStorage.getItem('token'));
         headers.append('Content-Type', 'application/json');
-        this._http.put(this.baseUrl + "/profile", JSON.stringify(formData), { headers: headers })
-        .map((res:Response) => res.json()).subscribe(
-                    //map the success function and alert the response
+        this._http.put(this.baseUrl + '/profile', JSON.stringify(formData), { headers: headers })
+        .map((res: Response) => res.json()).subscribe(
+                    // map the success function and alert the response
                      (success) => {
-                           this.success = {message: "Successfully updated profile"};
+                           this.success = {message: 'Successfully updated profile'};
                     },
                     (error) => {
-                    this.error = {message: "Could not update profile"};
+                    this.error = {message: 'Could not update profile'};
                   })
 
     }

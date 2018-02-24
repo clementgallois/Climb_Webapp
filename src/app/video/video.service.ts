@@ -12,13 +12,13 @@ export class VideoService {
   private baseUrl = environment.apiUrl;
 
   constructor(
-    private _http: Http){}
+    private _http: Http) {}
 
   likeVideo(video: any) {
-    let headers = new Headers();
+    const headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
-    headers.append('x-access-token', localStorage.getItem("token"));
+    headers.append('x-access-token', localStorage.getItem('token'));
 
     return this._http
       .post(
@@ -33,10 +33,10 @@ export class VideoService {
   }
 
   unlikeVideo(video: any) {
-    let headers = new Headers();
+    const headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
-    headers.append('x-access-token', localStorage.getItem("token"));
+    headers.append('x-access-token', localStorage.getItem('token'));
 
     return this._http
       .delete(
@@ -50,10 +50,10 @@ export class VideoService {
   }
 
   getVideo(id) {
-    let headers = new Headers();
+    const headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
-    headers.append('x-access-token', localStorage.getItem("token"));
+    headers.append('x-access-token', localStorage.getItem('token'));
 
 
     return this._http
