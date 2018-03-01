@@ -43,8 +43,6 @@ export class VideoComponent implements AfterViewInit {
       if (result.success) {
         this.video = result.video;
         this.comments = result.comments;
-        console.log('ici');
-        console.log(this.video);
       }
     });
   }
@@ -80,7 +78,6 @@ export class VideoComponent implements AfterViewInit {
       const headers = new Headers();
       headers.append('x-access-token', localStorage.getItem('token'));
         headers.append('Content-Type', 'application/json');
-      console.log(this.baseUrl + '/videos/' + this.video._id + '/comment');
       this._http.post(this.baseUrl + '/videos/' + this.video._id + '/comment', JSON.stringify(formData), { headers: headers })
       .map((res: Response) => res.json()).subscribe(
                                 // map the success function and alert the response

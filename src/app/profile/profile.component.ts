@@ -36,11 +36,9 @@ export class ProfileComponent implements AfterViewInit {
     private _http: Http) {}
 
   ngAfterViewInit() {
-    console.log('user:', this.user);
     this._service.getProfileData(this.user).subscribe((result) => {
       if (result.success) {
 
-        console.log(result);
         this.pictureProfil = result.user.profile.pictureUrl;
         this.firstName = result.user.profile.firstName;
         this.lastName = result.user.profile.lastName;
@@ -78,7 +76,6 @@ export class ProfileComponent implements AfterViewInit {
         'message': message,
         'sendTo': this.id
       };
-      console.log(formData);
       const headers = new Headers();
       headers.append('x-access-token', localStorage.getItem('token'));
       headers.append('Content-Type', 'application/json');

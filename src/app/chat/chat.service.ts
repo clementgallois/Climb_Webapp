@@ -24,7 +24,6 @@ export class ChatService {
       )
       .map(res => { return res.json()})
       .map((res) => {
-        console.log(res)
         return res;
       });
 

@@ -10,14 +10,14 @@ import { environment } from '../../environments/environment';
 
 export class UploadComponent {
 
+  private loading: boolean;
+  private error;
+  private success;
   private baseUrl = environment.apiUrl;
     constructor(
     private _router: Router,
     private _http: Http,
-     private el: ElementRef){}
-    private loading;
-    private error;
-    private success;
+     private el: ElementRef) {}
 
   submit() {
 
@@ -27,19 +27,19 @@ export class UploadComponent {
     const title: HTMLInputElement = this.el.nativeElement.querySelector('#title').value;
     const description: HTMLInputElement = this.el.nativeElement.querySelector('#description').value;
     const formData = new FormData();
-    if (video != null && title != null){
+    if (video != null && title != null) {
       this.loading = true;
       formData.append('video', video);
       formData.append('title', title);
-      if (description != null){
+      if (description != null) {
       formData.append('description', description);
     }
-  		const headers = new Headers();
+      const headers = new Headers();
 
-      	headers.append('x-access-token', localStorage.getItem('token'));
-  		this._http.post(this.baseUrl + '/videos/upload', formData, { headers: headers })
-  		.map((res: Response) => res.json()).subscribe(
-                  //map the success function and alert the response
+        headers.append('x-access-token', localStorage.getItem('token'));
+      this._http.post(this.baseUrl + '/videos/upload', formData, { headers: headers })
+      .map((res: Response) => res.json()).subscribe(
+                  // map the success function and alert the response
                    (success) => {
                            this.success = {message: 'Video added'};
                            this.loading = false;
@@ -50,8 +50,7 @@ export class UploadComponent {
                     this.loading = false;
 
                   });
-    }
-    else{
+    } else {
      this.error = {message: 'Fields title and video are required'};
    }
 

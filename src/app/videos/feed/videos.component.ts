@@ -34,7 +34,6 @@ export class VideosFeedComponent implements AfterViewInit {
     this._videosService.getFeedVideos().subscribe((result) => {
       if (result.success) {
         this.videos = result.videos;
-        console.log(this.videos);
       }
     });
   }

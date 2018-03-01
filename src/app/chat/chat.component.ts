@@ -46,7 +46,6 @@ export class ChatComponent implements OnInit {
                     this.currentConv.participant1._id :
                     this.currentConv.participant2._id)
       };
-      console.log(formData)
       const headers = new Headers();
       headers.append('x-access-token', localStorage.getItem('token'));
       headers.append('Content-Type', 'application/json');

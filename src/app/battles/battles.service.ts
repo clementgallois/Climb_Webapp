@@ -12,13 +12,13 @@ export class BattlesService {
   private baseUrl = environment.apiUrl;
 
   constructor(
-    private _http: Http){}
+    private _http: Http) {}
 
   voteBattle(battle: any, vote: any) {
-    let headers = new Headers();
+    const headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
-    headers.append('x-access-token', localStorage.getItem("token"));
+    headers.append('x-access-token', localStorage.getItem('token'));
 
     return this._http
       .post(
@@ -33,10 +33,10 @@ export class BattlesService {
   }
 
   unvoteBattle(battle: any) {
-    let headers = new Headers();
+    const headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
-    headers.append('x-access-token', localStorage.getItem("token"));
+    headers.append('x-access-token', localStorage.getItem('token'));
 
     return this._http
       .delete(
@@ -50,11 +50,11 @@ export class BattlesService {
   }
 
   getProfileBattles() {
-    let headers = new Headers();
-    let username = localStorage.getItem("username");
+    const headers = new Headers();
+    const username = localStorage.getItem('username');
 
     headers.append('Content-Type', 'application/json');
-    headers.append('x-access-token', localStorage.getItem("token"));
+    headers.append('x-access-token', localStorage.getItem('token'));
 
 
     return this._http
@@ -69,10 +69,10 @@ export class BattlesService {
   }
 
   getFeedBattles() {
-    let headers = new Headers();
+    const headers = new Headers();
 
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    headers.append('x-access-token', localStorage.getItem("token"));
+    headers.append('x-access-token', localStorage.getItem('token'));
 
 
     return this._http

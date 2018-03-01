@@ -16,10 +16,6 @@ export class SettingsComponent {
 
   }
 
-  // ngAfterViewInit() {
-  //
-  // }
-
   logout() {
     this._authService.logout();
     this._router.navigate(['login']);
