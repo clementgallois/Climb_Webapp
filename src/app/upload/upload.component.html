@@ -1,14 +1,17 @@
 <div class="container">
-                    <div *ngIf='error' ng-class="{fade:doFade}" class="alert alert-danger"><strong>Erreur:</strong> {{error.message}}</div>
-                    <div *ngIf='success' ng-class="{fade:doFade}" class="alert alert-success">{{success.message}}</div>
+<div *ngIf='error' ng-class="{fade:doFade}" class="alert alert-danger"><strong>Erreur:</strong> {{error.message}}</div>
+<div *ngIf='success' ng-class="{fade:doFade}" class="alert alert-success">{{success.message}}</div>
 <h1 class="text-center">Upload a new video</h1><br>
 <form #form="ngForm" (submit)="submit(form.value)" class="form">
   <div class="form-group text-center">
     <label class="btn btn-primary" for="video">
     <input id="video" type="file" name="video" accept="video/*" style="display:none"
-    onchange="$('#upload-file-info').html(this.files[0].name)">
+    (change)="handleFileInput($event.target.files)">
     Choose your file
     </label>
+    <div *ngIf='video'>
+      <app-thumbnail-selector [video]=video></app-thumbnail-selector>
+  </div>
     <span class='label label-info' id="upload-file-info"></span>
   </div>
 

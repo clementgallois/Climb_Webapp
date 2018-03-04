@@ -1,7 +1,7 @@
 import { Component,  ElementRef } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Router } from '@angular/router';
-
+import {DomSanitizer} from '@angular/platform-browser';
 import { environment } from '../../environments/environment';
 @Component({
   selector : 'app-home',
@@ -13,6 +13,7 @@ export class UploadComponent {
   private loading: boolean;
   private error;
   private success;
+  private video: File = null;
   private baseUrl = environment.apiUrl;
     constructor(
     private _router: Router,
@@ -54,5 +55,9 @@ export class UploadComponent {
      this.error = {message: 'Fields title and video are required'};
    }
 
+  }
+
+  handleFileInput(files: FileList) {
+    this.video = files.item(0);
   }
 }

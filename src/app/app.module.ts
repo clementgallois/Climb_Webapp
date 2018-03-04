@@ -30,6 +30,7 @@ import { VideoComponent } from './video/video.component';
 import { SearchComponent } from './search/search.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { ChatComponent } from './chat/chat.component';
+import { ThumbnailSelectorComponent } from './thumbnail-selector/thumbnail-selector.component';
 
 
 
@@ -52,6 +53,7 @@ import { ChatComponent } from './chat/chat.component';
     VideoComponent,
     RankingComponent,
     ChatComponent,
+    ThumbnailSelectorComponent,
   ],
   imports: [
     BrowserModule,
