@@ -15,7 +15,7 @@ declare var FB: any;
 })
 
 export class VideoComponent implements AfterViewInit {
-  @Input() video: any;
+  @Input() video: any = undefined;
   private error;
   private success;
   private loading;
@@ -37,8 +37,10 @@ export class VideoComponent implements AfterViewInit {
 
 
   ngAfterViewInit() {
+
+  if (!this.video) {
   this.route.paramMap
-    .switchMap((params: ParamMap) => this._videoService.getVideo(params.get('id')))
+    .switchMap((params: ParamMap) => {console.log(params); return this._videoService.getVideo(params.get('id'))})
     .subscribe((result) => {
       if (result.success) {
         this.video = result.video;
@@ -46,6 +48,7 @@ export class VideoComponent implements AfterViewInit {
       }
     });
   }
+}
 
   like(video: any) {
     this._videoService.likeVideo(video).subscribe((result) => {

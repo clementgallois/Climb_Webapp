@@ -21,7 +21,6 @@ export class ProfileService {
     }
     headers.append('Content-Type', 'application/json');
     headers.append('x-access-token', localStorage.getItem('token'));
-    console.log(headers)
 
     return this._http
       .get(
@@ -39,7 +38,6 @@ export class ProfileService {
     if (username === undefined) {
       username = localStorage.getItem('username');
     }
-
     headers.append('Content-Type', 'application/json');
     headers.append('x-access-token', localStorage.getItem('token'));
     return this._http
