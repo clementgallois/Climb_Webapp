@@ -1,5 +1,5 @@
 {
-  "extends": ["angular"],
+  "extends": ["angular", "eslint:recommended"],
   "rules":{
         "max-len": ["error",
       {
