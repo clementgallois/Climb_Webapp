@@ -4,8 +4,8 @@
 }
 
 .profile-nav ul li.active a {
-  color: #AAB3BF;
-  border-left: 5px solid #AAB3BF;
+  color: #937F01;
+  border-left: 5px solid #937F01;
   background: #F6FAFF;
 }
 
@@ -24,7 +24,7 @@
 .user-heading.round a.user-picture {
   border-radius: 50%;
   -webkit-border-radius: 50%;
-  border: 10px solid rgba(255,255,255,0.3);
+  border: 10px solid #937F01;
   display: inline-block;
 }
 
