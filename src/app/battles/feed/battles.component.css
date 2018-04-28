@@ -1,17 +1,17 @@
-.battle {
-  background-color: #F6FAFF;
+ffdd25.battle {
+  background-color: #white;
 }
 
 .panel.battle .battle-heading, .panel.battle .battle-metadata {
   margin: 5px 10px 5px 10px;
 }
 .panel.battle .video1{
-  background-color: #F6FAFF;
+  background-color: #white;
 }
 
 
 .panel.battle .video2{
-  background-color:#ddecff  ;
+  background-color:#ffdd25  ;
 }
 .battle-content{
   background-color: #000000;
@@ -41,7 +41,7 @@
 
 .panel.battle .battle-bar .user1{
 
-  background-color: #F6FAFF;
+  background-color: #white;
   width:20%;
   position:initial;
   text-align: left;
@@ -52,14 +52,14 @@
 .panel.battle .battle-bar .score-bar .score1{
   height:100%;
   width:50%;
-  background-color: #F6FAFF;
+  background-color: #white;
   float:left;
 }
 .panel.battle .battle-bar .score-bar .score2{
   text-align: right;
   height:100%;
   width:50%;
-  background-color: #ddecff;
+  background-color: #ffdd25;
   float: right;
   -webkit-clip-path: polygon(3% 0, 100% 0, 100% 100%, 0 100%);
   clip-path: polygon(3% 0, 100% 0, 100% 100%, 0 100%);
@@ -67,7 +67,7 @@
 
 .panel.battle .battle-bar .user2{
 
-  background-color:#ddecff  ;
+  background-color:#ffdd25  ;
   position:initial;
   text-align: right;
 }
@@ -84,7 +84,7 @@
 .panel.battle .divider {
   border-top: 2px solid #D8D8D8;
   margin: 15px 10px 5px 10px;
-  
+
 }
 
 .panel.battle .battle-footer {
@@ -95,4 +95,10 @@
   color: #2B3440;
   font-size: 13px;
   margin-right: 5px;
+}
+
+
+.panel.battle{
+
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }

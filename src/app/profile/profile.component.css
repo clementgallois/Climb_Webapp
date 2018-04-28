@@ -1,3 +1,6 @@
+.panel{
+  background-color: inherit;
+}
 .profile-nav ul.nav > li {
   border-bottom: 1px solid #ebeae6;
   line-height: 30px;
@@ -21,10 +24,17 @@
   color:#414141 !important;
   background-color: inherit !important;
 }
-.nav-pills {
-  margin-top: 5px;
+.nav-stacked > li + li{
+  margin-top:0;
 }
-
+.nav-pills {
+  margin-top: 25px;
+ background-color: white;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+.nav-pills > li > a{
+  border-radius: 0;
+}
 .user-heading.round a.user-picture {
   border-radius: 50%;
   -webkit-border-radius: 50%;
@@ -35,10 +45,11 @@
 .user-heading {
   background: #AAB3BF;
   color: #FFFFFF;
-  border-radius: 4px 4px 0 0;
-  -webkit-border-radius: 4px 4px 0 0;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
   text-align: center;
   padding: 30px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
 .user-heading img {

@@ -13,3 +13,22 @@
   color:#414141;
   background-color: inherit;
 }
+
+.panel{
+  border:0;
+}
+
+.nav-stacked > li {
+  margin-top: 0;
+  border-bottom: 1px solid #ebeae6;
+  line-height: 30px;
+}
+.nav-pills {
+ background-color: white;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+
+.nav-pills > li > a{
+  border-radius: 0;
+}
