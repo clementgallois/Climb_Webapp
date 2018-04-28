@@ -14,7 +14,7 @@
                             </div>
                         </div>
                         <div class="modal-body" style="height: 440px;">
-                            <form (ngSubmit)="onSubmit()" class="form col-md-12 center-block">
+                            <form #f="ngForm" (ngSubmit)="onSubmit()" class="form col-md-12 center-block">
                                 <div class="form-group">
                                     <input [(ngModel)]=email id="email" class="form-control input-lg" placeholder="Email" type="text" name="email">  
                                 </div>

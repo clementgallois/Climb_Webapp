@@ -1,5 +1,5 @@
 <div class="videos">
-  <div *ngIf="video" class="panel video">
+  <div *ngIf="video" class="panel video" style="padding-bottom:75px">
     <div class="video-heading">
       <img src="{{video.ownerId.profile.pictureUrl}}">
       <a [routerLink]="['/profile', video.ownerId.profile.username, 'videos']">{{ video.ownerId.profile.username }}</a>

@@ -8,7 +8,7 @@ import { RankingService } from './ranking.service';
 })
 export class RankingComponent implements AfterViewInit {
 
-    private ranking = [];
+    private ranking = [{username: 'perceles', count: 4}];
   constructor(private _rankingService: RankingService) {}
 
 
@@ -17,7 +17,7 @@ export class RankingComponent implements AfterViewInit {
        if (result.success) {
            this.ranking = result.likes;
         } else {
-          alert('Videos feed failed');
+          alert(result);
         }
     });
   }
