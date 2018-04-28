@@ -1,7 +1,7 @@
 .nav-pills > li.active > a {
   color: #414141;
   border-left: 5px solid #ffdd25;
-  background: #F6FAFF;
+  background: #ffdd2538;
 }
 
 .nav-pills > li > a {
@@ -14,4 +14,11 @@
 
 .nav-pills > li > a.logoutLink:hover {
   cursor: pointer;
+  background: #ffdd2538;
+}
+
+
+.nav > li > a:hover, .nav > li > a:focus{
+  color:#414141 !important;
+  background-color: inherit !important;
 }

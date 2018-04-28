@@ -1,9 +1,15 @@
 .nav-pills > li.active > a {
   color: #414141;
   border-left: 5px solid #ffdd25;
-  background: #F6FAFF;
+  background: #ffdd2538;
 }
 
 .nav-pills > li > a {
   color: #AAB3BF;
+}
+
+.nav > li > a:hover, .nav > li > a:focus{
+
+  color:#414141;
+  background-color: inherit;
 }
