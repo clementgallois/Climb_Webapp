@@ -1,5 +1,5 @@
 .navbar-principal {
-  background-color: #56687F;
+  background-color: #414141;
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -9,6 +9,17 @@
 
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
   color: #ADCFFF;
-  background-color: #56687F;
+  background-color: #414141;
 
+}
+
+.navbar-item >a{
+  border-radius: 5px;
+  margin: 10px 5px;
+padding: 5px;
+}
+
+.navbar-item > a:hover{
+  color: #414141 !important;
+  background-color: #ffdd25;
 }
