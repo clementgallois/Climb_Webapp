@@ -1,5 +1,12 @@
-
-<video id='videotest' [src]="tempUrl" style="display:none;"#videoplayer ></video>
-<canvas id="canvas" #canvas></canvas>
-<input type="range" min="1" max="1000" [value]="time" (change)='seekbar($event.target.value)'>
-<div (click)='test()' class="btn btn-primary"> test<div>
+<div class="mymodal">
+  <div class="thumbnail-selector">
+    <div><h2 >Thumbnail:</h2></div>
+    <div>
+      <video id='videotest' [src]="tempUrl" style="display:none;"#videoplayer ></video>
+      <canvas class="canvas" #canvas></canvas>
+      <input type="range" min="1" max="1000" [value]="time" (change)='seekbar($event.target.value)'>
+      <div (click)='validateThumbnail()' class="btn btn-primary">Validate</div>
+      <div (click)='defaultThumbnail()' class="btn btn-primary">Default</div>
+    </div>
+  </div>
+</div>

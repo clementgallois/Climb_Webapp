@@ -4,7 +4,8 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { VideoService } from './video.service';
 import 'rxjs/add/operator/switchMap';
 import { environment } from '../../environments/environment';
-
+import {UploadComponent} from '../upload/upload.component'
+import { BsModalService } from 'ngx-bootstrap/modal';
 declare var FB: any;
 
 @Component({
@@ -23,9 +24,11 @@ export class VideoComponent implements AfterViewInit {
   private comments;
   private challengedVideoId;
   private competitorVideoId;
+  private battleForm = false;
+  private alone = false;
 
   constructor(private _http: Http, private el: ElementRef,
-    private route: ActivatedRoute, private _videoService: VideoService) {
+    private route: ActivatedRoute, private _videoService: VideoService, private modalService: BsModalService) {
       FB.init({
         appId      : '1120118441421753',
         cookie     : true,
@@ -35,6 +38,13 @@ export class VideoComponent implements AfterViewInit {
       FB.AppEvents.logPageView();
     }
 
+  openModalWithComponent() {
+      const initialState = {
+        challengedVideoId: this.challengedVideoId
+      };
+      const bsModalRef = this.modalService.show(UploadComponent, {initialState});
+      bsModalRef.content.closeBtnName = 'Close';
+    }
 
   ngAfterViewInit() {
 
@@ -44,6 +54,9 @@ export class VideoComponent implements AfterViewInit {
     .subscribe((result) => {
       if (result.success) {
         this.video = result.video;
+          this.video.isOwner = (this.video.ownerId._id === localStorage.getItem('userId') ? true : false);
+        console.log(this.video)
+          this.alone = true;
         this.comments = result.comments;
       }
     });
@@ -70,6 +83,7 @@ export class VideoComponent implements AfterViewInit {
 
   challenge(video: any) {
     this.challengedVideoId = video._id;
+    this.openModalWithComponent()
   }
 
   postComment() {

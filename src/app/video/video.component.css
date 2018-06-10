@@ -1,7 +1,10 @@
 .video {
   background-color: #white;
 }
-
+.alone{
+  width: 50%;
+  margin: auto;
+}
 .clickable {
   cursor: pointer;
 }
@@ -11,17 +14,21 @@
 
 .panel.video .video-content {
   height:500px;
+  padding:2px 15px;
+}
+
+.panel.video .video-content video{
   background-color: #000000;
+  border:1px solid lightgray;
 }
 
 .panel.video .video-heading a {
   color: #2B3440;
   margin: 5px 0 0 10px;
-  position: absolute;
   font-size: 15px;
 }
 
-.panel.video .video-heading .video-category {
+.panel.video .video-category {
   margin: 30px 0 0 10px;
   position: absolute;
   font-size: 11px;
@@ -35,9 +42,11 @@
   -webkit-border-radius: 50%;
   display: inline-block;
 }
+
 .panel.video .video-comment {
   margin: 10px 10px 5px 10px;
 }
+
 .panel.video .video-comment img {
   width: 40px;
   height: 40px;
@@ -56,6 +65,7 @@
   color: black;
 }
 
+
 .panel.video .divider {
   border-top: 1px solid #D8D8D8;
   margin: 10px 10px 5px 10px;
@@ -73,6 +83,13 @@
 }
 
 .panel.video{
-
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+.footer-buttons{
+  margin-right:10px;
+  width:20px;
+  height:20px;
+}
+.footer-buttons:hover{
+  cursor:pointer;
 }

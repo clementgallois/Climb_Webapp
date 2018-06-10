@@ -14,9 +14,9 @@
           <ul class="nav navbar-nav">
                 <li class="navbar-item" [routerLinkActive]="['active']"><a [routerLink]="['/profile', username, 'videos']">Ma chaîne</a></li>
 
-                <li class="navbar-item" [routerLinkActive]="['active']"><a routerLink="/upload">Ajouter video</a></li>
+                <li class="navbar-item" ><a style="cursor:pointer" (click)="openModalWithComponent()">Ajouter video</a></li>
                 <li class="navbar-item" [routerLinkActive]="['active']"><a routerLink="/ranking">Ranking</a></li>
-                <li class="navbar-item" [routerLinkActive]="['active']"><a routerLink="/profile/messages">Messages</a></li>
+                <!--<li class="navbar-item" [routerLinkActive]="['active']"><a routerLink="/profile/messages">Messages</a></li>-->
                 <!-- <li><a href="#">Mes battles</a></li>
                 <li><a href="#">Mes follows</a></li>
                 <li><a href="#">Classement</a></li> -->
