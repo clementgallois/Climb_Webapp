@@ -5,12 +5,21 @@ ffdd25.battle {
 .panel.battle .battle-heading, .panel.battle .battle-metadata {
   margin: 5px 10px 5px 10px;
 }
-.panel.battle .video1{
+
+.panel.battle .video{
+
+  padding:2px 15px;
+}
+.panel.battle .battle-content video{
+    background-color: #000000;
+    border:1px solid lightgray;
+}
+
+.panel.battle .video-top{
   background-color: #white;
 }
 
-
-.panel.battle .video2{
+.panel.battle .video-bot{
   background-color:#ffdd25  ;
 }
 .battle-content{

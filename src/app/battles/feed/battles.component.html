@@ -2,7 +2,7 @@
 <div class="battles">
                     <div *ngIf='error' ng-class="{fade:doFade}" class="alert alert-danger"><strong>Erreur:</strong> {{error.message}}</div>
   <div *ngFor="let battle of battles" class="panel battle">
-  <div class="video1">
+  <div class="video video-top">
 
      <div class="battle-content">
       <video  controls="" width="100%" height='100%'>
@@ -14,7 +14,7 @@
   <div class="battle-bar">
   	<div class="user1">
       <img src="{{battle.video_1.video.ownerId.profile.pictureUrl}}">
-      <a [routerLink]="['/profileOther', battle.video_1.video.ownerId.profile.username, 'battles']">{{battle.video_1.video.ownerId.profile.username}}</a>
+      <a [routerLink]="['/profile', battle.video_1.video.ownerId.profile.username, 'battles']">{{battle.video_1.video.ownerId.profile.username}}</a>
       <button type="button" class="btn btn-primary btn-sm" (click)="vote(battle, 1)" *ngIf="battle.video_1.isVoted == false" style="margin-right:10px;">vote</button>
       <button type="button" class="btn btn-secondary btn-sm " (click)="unvote(battle)" *ngIf="battle.video_1.isVoted == true" style="margin-right:10px;"> voted</button>
     </div>
@@ -25,11 +25,11 @@
     <div class="user2">
       <button type="button" class="btn btn-primary btn-sm" (click)="vote(battle, 2)" *ngIf="battle.video_2.isVoted == false" style="margin-right:10px;">vote</button>
       <button type="button" class="btn btn-secondary btn-sm " (click)="unvote(battle)" *ngIf="battle.video_2.isVoted == true" style="margin-right:10px;"> voted</button>
-      <a [routerLink]="['/profileOther', battle.video_2.video.ownerId.profile.username, 'battles']">{{battle.video_2.video.ownerId.profile.username}}</a>
+      <a [routerLink]="['/profile', battle.video_2.video.ownerId.profile.username, 'battles']">{{battle.video_2.video.ownerId.profile.username}}</a>
       <img src="{{battle.video_2.video.ownerId.profile.pictureUrl}}">
     </div>
   </div>
-  <div class="video2">
+  <div class="video video-bot">
     <div class="battle-content">
       <video controls="" width="100%" height='100%'>
         <source src="{{battle.video_2.video.url}}" />

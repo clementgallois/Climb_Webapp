@@ -1,4 +1,34 @@
 .canvas{
+  text-align: center;
   width:200px;
   height:200px;
+}
+
+.thumbnail-selector{
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+}
+
+
+.btn-primary{
+  color: #212529;
+  background-color: #f9dd25;
+  border-color: #E0C621;
+}
+
+.mymodal{
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }

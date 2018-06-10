@@ -1,4 +1,5 @@
-import { Component, AfterViewInit, OnInit, OnChanges, Input, ViewChild, SimpleChanges, SimpleChange } from '@angular/core';
+import { Component, AfterViewInit, OnInit, OnChanges, Input, Output,
+  EventEmitter, ViewChild, SimpleChanges, SimpleChange } from '@angular/core';
 
 import {DomSanitizer} from '@angular/platform-browser';
 
@@ -15,11 +16,13 @@ export class ThumbnailSelectorComponent implements OnInit, OnChanges, AfterViewI
   @ViewChild('canvas') canvas: any;
 
   @Input() video: File;
+  @Output() notify: EventEmitter<string> = new EventEmitter<string>();
 
   private tempUrl: any;
   private context: CanvasRenderingContext2D;
   private element: HTMLVideoElement;
   private time: number;
+  changeThumbnail = false;
 
   constructor(
     private sanitizer: DomSanitizer
@@ -45,14 +48,26 @@ export class ThumbnailSelectorComponent implements OnInit, OnChanges, AfterViewI
       this.time = 100
       this.videoplayer.nativeElement.currentTime = this.videoplayer.nativeElement.duration * (this.time / 1000);
       this.redrawImage.bind(this)()
+      // default thumb
+      setTimeout(() => { this.notify.emit(this.canvas.nativeElement.toDataURL('image/jpeg')) }, 200);
     }
-    redrawImage() {
-        this.context.clearRect(0, 0, IMAGE_WIDTH, IMAGE_HEIGHT);
-        this.context.drawImage(this.element, 0, 0, IMAGE_WIDTH, IMAGE_HEIGHT);
 
+    redrawImage() {
+        console.log(this.element.videoWidth)
+        this.context.fillStyle = 'black';
+        this.context.fillRect(0, 0, 300, 200);
+        this.context.drawImage(this.element,
+          0, 0, 300, IMAGE_HEIGHT);
+    }
+
+    validateThumbnail() {
+      this.notify.emit(this.canvas.nativeElement.toDataURL('image/jpeg'));
+    }
+    defaultThumbnail() {
+      this.seekbar(100)
+      setTimeout(() => { this.notify.emit(this.canvas.nativeElement.toDataURL('image/jpeg')) }, 200);
     }
     seekbar(value) {
-      console.log(this.time)
       this.time = value;
       const time = this.videoplayer.nativeElement.duration * (this.time / 1000);
       this.videoplayer.nativeElement.currentTime = time

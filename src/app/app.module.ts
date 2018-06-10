@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { ModalModule } from 'ngx-bootstrap';
 
 import { AuthGuard } from './_guards/auth.guard';
 import { AuthService } from './auth/auth.service';
@@ -59,7 +60,8 @@ import { ThumbnailSelectorComponent } from './thumbnail-selector/thumbnail-selec
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    ModalModule.forRoot()
   ],
   providers: [
     AuthGuard,
