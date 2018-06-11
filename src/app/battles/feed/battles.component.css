@@ -1,13 +1,8 @@
-ffdd25.battle {
+.battle {
   background-color: #white;
 }
 
-.panel.battle .battle-heading, .panel.battle .battle-metadata {
-  margin: 5px 10px 5px 10px;
-}
-
 .panel.battle .video{
-
   padding:2px 15px;
 }
 .panel.battle .battle-content video{
@@ -15,32 +10,23 @@ ffdd25.battle {
     border:1px solid lightgray;
 }
 
-.panel.battle .video-top{
+.panel.battle .content-top{
   background-color: #white;
 }
 
-.panel.battle .video-bot{
+.panel.battle .content-bot{
   background-color:#ffdd25  ;
 }
 .battle-content{
   background-color: #000000;
   height: 300px;
 }
-.panel.battle .battle-heading a {
-  color: #2B3440;
-  margin: 5px 0 0 10px;
-  position: absolute;
-  font-size: 15px;
-}
 
-.panel.battle .battle-heading .battle-category {
-  margin: 30px 0 0 10px;
-  position: absolute;
-  font-size: 11px;
-  color: darkgray;
+.user-bar {
+  display:flex;
+  align-items: center;
 }
-
-.panel.battle .battle-bar img {
+.user-img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -48,66 +34,25 @@ ffdd25.battle {
   display: inline-block;
 }
 
-.panel.battle .battle-bar .user1{
-
-  background-color: #white;
-  width:20%;
-  position:initial;
-  text-align: left;
+.user1 .vote-number{
+  margin-left:auto;
 }
+.user2 .vote-number{
+  margin-right:auto;
+}
+.user2{
+  justify-content: flex-end;
+}
+
 .panel.battle .battle-bar .score-bar{
   height:20px;
   }
-.panel.battle .battle-bar .score-bar .score1{
-  height:100%;
-  width:50%;
-  background-color: #white;
-  float:left;
-}
-.panel.battle .battle-bar .score-bar .score2{
-  text-align: right;
-  height:100%;
-  width:50%;
-  background-color: #ffdd25;
-  float: right;
-  -webkit-clip-path: polygon(3% 0, 100% 0, 100% 100%, 0 100%);
-  clip-path: polygon(3% 0, 100% 0, 100% 100%, 0 100%);
-}
-
-.panel.battle .battle-bar .user2{
-
-  background-color:#ffdd25  ;
-  position:initial;
-  text-align: right;
-}
-.panel.battle .battle-metadata a.title {
-  color: #2B3440;
-  font-size: 20px;
-}
-
-.panel.battle .battle-metadata .battle-description {
-  margin-top: 10px;
-  color: black;
-}
 
 .panel.battle .divider {
   border-top: 2px solid #D8D8D8;
   margin: 15px 10px 5px 10px;
-
 }
-
-.panel.battle .battle-footer {
-  margin: 10px 10px 5px 10px;
-}
-
-.panel.battle .battle-footer a {
-  color: #2B3440;
-  font-size: 13px;
-  margin-right: 5px;
-}
-
 
 .panel.battle{
-
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
