@@ -1,13 +1,15 @@
 <div class="overview">
   <div class="widget profile">
+    <div>
     <div class="widget-header">
       <h3 class="widget-caption">Profile</h3>
     </div>
+  </div>
     <div class="widget-body">
                     <div *ngIf='error' ng-class="{fade:doFade}" class="alert alert-danger"><strong>Erreur:</strong> {{error.message}}</div>
                     <div *ngIf='success' ng-class="{fade:doFade}" class="alert alert-success">{{success.message}}</div>
       <div class="profile-photo text-center">
-        <label><b>Photo de profile:</b></label><br>
+        <label><b>Profile picture:</b></label><br>
       <div class='img-upload'>
           <label for="upload">
             <img class="img-rounded" [src]="url" style="height:150px;width:150px;">
@@ -18,19 +20,19 @@
       </div>
       <form #form="ngForm" (ngSubmit)="onSubmit()">
       <div class="form-group text-center">
-        <br><label><b>Nom d'utilisateur:</b></label>
+        <br><label><b>Username:</b></label>
         <input [(ngModel)]="user.profile.username" type="text" id="username" name="username" class="form-control" style="text-align:center">
       </div>
       <div class="form-group text-center">
-        <br><label><b>Prénom:</b></label>
+        <br><label><b>Name:</b></label>
         <input [(ngModel)]="user.profile.firstName" type="text" id="firstName" name="firstName" class="form-control" style="text-align:center">
       </div>
       <div class="form-group text-center">
-        <br><label><b>Nom:</b></label>
+        <br><label><b>Surname:</b></label>
         <input [(ngModel)]="user.profile.lastName" type="text" id="lastName" name="lastName" class="form-control" style="text-align:center">
       </div>
       <div class="form-group text-center">
-        <br><label><b>Sexe:</b></label><br>
+        <br><label><b>Sex:</b></label><br>
         <span *ngFor="let gender of genders">
           <span>{{ gender.label }}</span>
             <input type="radio" name="gender"

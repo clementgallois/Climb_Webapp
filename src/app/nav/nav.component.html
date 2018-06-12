@@ -12,15 +12,15 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-                <li class="navbar-item" [routerLinkActive]="['active']"><a [routerLink]="['/profile', username, 'videos']">Ma chaîne</a></li>
+                <li class="navbar-item" [routerLinkActive]="['active']"><a [routerLink]="['/profile', username, 'videos']">My channel</a></li>
 
-                <li class="navbar-item" ><a style="cursor:pointer" (click)="openModalWithComponent()">Ajouter video</a></li>
+                <li class="navbar-item" ><a style="cursor:pointer" (click)="openModalWithComponent()">Upload video</a></li>
                 <li class="navbar-item" [routerLinkActive]="['active']"><a routerLink="/ranking">Ranking</a></li>
                 <!--<li class="navbar-item" [routerLinkActive]="['active']"><a routerLink="/profile/messages">Messages</a></li>-->
                 <!-- <li><a href="#">Mes battles</a></li>
                 <li><a href="#">Mes follows</a></li>
                 <li><a href="#">Classement</a></li> -->
-                <li class="navbar-item" [routerLinkActive]="['active']"><a routerLink="/settings">Paramètres</a></li>
+                <li class="navbar-item" [routerLinkActive]="['active']"><a routerLink="/settings">Parameters</a></li>
           </ul>
           <div class="navbar-search"> <!-- Trick to hide the search-navbar in xs in the toggle navigation (temporary trick) -->
             <div class="input-group pull-right">
@@ -37,6 +37,6 @@
 <div class="footer">
   <div id="fixed" class="col-xs-12">
        <hr>
-  <p>&copy; Climb Team &middot; <a href="#">CGU</a> &middot; <a href="#">A propos</a></p>
+  <p>&copy; Climb Team &middot; <a href="#">CGU</a> &middot; <a href="#">About</a></p>
   </div>
 </div>

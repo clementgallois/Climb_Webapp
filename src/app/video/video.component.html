@@ -27,6 +27,7 @@
       <img class="footer-buttons pull-right" (click)="challenge(video)"  *ngIf="video && !video.isOwner" src="../../assets/img/versus_color_border2.png">
 
     </div>
+    <div *ngIf="alone">
     <div *ngFor="let comment of comments" class="video-comment">
 
     <div class="divider">
@@ -35,12 +36,11 @@
       <a [routerLink]="['/profile']"><b>{{ comment.userId.profile.username }}</b></a>
      {{ comment.text }}
     </div>
-    <div *ngIf="!true">
       <div  class="divider"></div>
       <div class="comment-form">
-        <form #form="ngForm" (submit)="postComment(form.value)" class="form col-md-12 center-block">
-            <input class="form-control" id="commentText" type="text" name="commentText"  >
-            <div class="text-right"><button type="submit" class="btn btn-success">Submit</button></div>
+        <form #form="ngForm" (submit)="postComment(form.value)" class="comment-block">
+            <input class="form-control" id="commentText" type="text" name="commentText"  placeholder="Type your comment here and press enter">
+            <!-- <div class="text-right"><button type="submit" class="btn btn-success">Write a comment...</button></div> -->
         </form>
       </div>
     </div>

@@ -93,3 +93,9 @@
 .footer-buttons:hover{
   cursor:pointer;
 }
+
+.comment-block{
+  margin:5px 10px;
+  display:flex;
+  align-items: flex-end;
+}

@@ -7,14 +7,16 @@
               <ul class="nav nav-pills nav-stacked">
                 <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
                   <a routerLink="/settings/editProfile">
-                    <i class="fa fa-user-circle"></i>
+
+                              <span class="glyphicon glyphicon-user"></span>
                     Profile
                   </a>
                 </li>
                 <li>
                   <a class="logoutLink" (click)="logout()">
-                    <i class="fa fa-sign-out"></i>
-                    Déconnexion
+
+          <span class="glyphicon glyphicon-off"></span>
+                    Logout
                   </a>
                 </li>
               </ul>
