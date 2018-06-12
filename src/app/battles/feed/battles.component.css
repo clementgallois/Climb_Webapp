@@ -3,30 +3,25 @@
 }
 
 .panel.battle .video{
-  padding:2px 15px;
+  padding:5px 15px
 }
 .panel.battle .battle-content video{
     background-color: #000000;
-    border:1px solid lightgray;
-}
-
-.panel.battle .content-top{
-  background-color: #white;
-}
-
-.panel.battle .content-bot{
-  background-color:#ffdd25  ;
 }
 .battle-content{
   background-color: #000000;
+  border:1px solid lightgray;
   height: 300px;
 }
 
 .user-bar {
   display:flex;
+  width: 50%;
+  justify-content: space-around;
   align-items: center;
 }
 .user-img {
+  background-color: white;
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -34,25 +29,54 @@
   display: inline-block;
 }
 
+.vs-logo{
+  position:absolute;
+  top:50%;
+  left:50%;
+  height:50px;
+  margin-top: -25px;
+  margin-left: -25px;
+}
 .user1 .vote-number{
   margin-left:auto;
 }
 .user2 .vote-number{
   margin-right:auto;
 }
+.user1{
+  padding-bottom: 12px;
+}
 .user2{
-  justify-content: flex-end;
+  margin-left: auto;
+  padding-top:12px;
 }
 
-.panel.battle .battle-bar .score-bar{
-  height:20px;
-  }
+.usr a{
+    font-size: 1.1em;
+    font-weight: bold;
+}
+.user1 .usr a{
+      margin-left: 5px;
+      color: #404040;
+}
+.user2 .usr a{
+      margin-right: 5px;
+      color: #404040;
+}
 
 .panel.battle .divider {
   border-top: 2px solid #D8D8D8;
-  margin: 15px 10px 5px 10px;
+  margin: 5px 60px;
+}
+
+.btn-yellow{
+    color: #212529;
+    background-color: #f9dd25;
+    border-color: #E0C621;
 }
 
 .panel.battle{
+  border:0;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  position:relative;
 }

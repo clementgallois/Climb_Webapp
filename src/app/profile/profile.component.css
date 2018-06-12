@@ -53,6 +53,7 @@
 }
 
 .user-heading img {
+  background-color: white;
   width: 110px;
   height: 110px;
   border-radius: 50%;
