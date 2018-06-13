@@ -6,7 +6,7 @@
 
       <div class="video">
         <div class="battle-content">
-          <video  controls="" width="100%" height='100%'>
+          <video  controls="" width="100%" height='100%' poster="{{battle.video_1.video.thumbnailUrl}}">
             <source src="{{battle.video_1.video.url}}" />
           </video>
         </div>
@@ -17,21 +17,22 @@
           type="button"
           class="btn btn-secondary btn-sm btn-yellow"
           (click)="vote(battle, 1)"
-          *ngIf="battle.video_1.isVoted == false"
-          style="margin-right:10px;">
+          *ngIf="battle.video_1.isVoted == false">
             Vote for Me&nbsp;&nbsp;<span class="glyphicon">&#xe129;</span>
         </button>
         <button
           type="button"
           class="btn btn-secondary btn-sm"
           (click)="unvote(battle)"
-          *ngIf="battle.video_1.isVoted == true"
-          style="margin-right:10px;">
-            voted
+          *ngIf="battle.video_1.isVoted == true">
+            Delete Vote&nbsp;&nbsp;<i class="fa fa-trash" aria-hidden="true"></i>
         </button>
         <div class="usr">
           <img class="user-img" src="{{battle.video_1.video.ownerId.profile.pictureUrl}}">
+          <div class="score-name">
           <a [routerLink]="['/profile', battle.video_1.video.ownerId.profile.username, 'battles']">{{battle.video_1.video.ownerId.profile.username}}</a>
+          <div class="score1">{{battle.video_1.votes}} votes</div>
+        </div>
         </div>
       </div>
     </div>
@@ -42,30 +43,31 @@
     <div class="content-bot">
       <div class="user-bar user2">
         <div class="usr">
+        <div class="score-name">
           <a [routerLink]="['/profile', battle.video_2.video.ownerId.profile.username, 'battles']">{{battle.video_2.video.ownerId.profile.username}}</a>
-          <img class="user-img" src="{{battle.video_2.video.ownerId.profile.pictureUrl}}">
+          <div class="score1">{{battle.video_2.votes}} votes</div>
+        </div>
+        <img class="user-img" src="{{battle.video_2.video.ownerId.profile.pictureUrl}}">
         </div>
         <button
           type="button"
           class="btn btn-secondary btn-sm btn-yellow"
           (click)="vote(battle, 2)"
-          *ngIf="battle.video_2.isVoted == false"
-          style="margin-right:10px;">
+          *ngIf="battle.video_2.isVoted == false">
             Vote for Me&nbsp;&nbsp;<span class="glyphicon">&#xe130;</span>
         </button>
         <button
           type="button"
           class="btn btn-secondary btn-sm "
           (click)="unvote(battle)"
-          *ngIf="battle.video_2.isVoted == true"
-          style="margin-right:10px;">
-            voted
+          *ngIf="battle.video_2.isVoted == true">
+            Delete Vote&nbsp;&nbsp;<i class="fa fa-trash" aria-hidden="true"></i>
         </button>
         <!-- <div class="vote-number">{{battle.video_2.votes}} votes</div> -->
       </div>
       <div class="video">
         <div class="battle-content">
-          <video controls="" width="100%" height='100%'>
+          <video controls="" width="100%" height="100%" poster="{{battle.video_2.video.thumbnailUrl}}">
             <source src="{{battle.video_2.video.url}}" />
           </video>
         </div>

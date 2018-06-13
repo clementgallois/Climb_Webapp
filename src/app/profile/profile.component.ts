@@ -59,12 +59,12 @@ export class ProfileComponent implements AfterViewInit {
   }
   follow() {
     this._service.follow(this.user).subscribe((result) => {
-      window.location.reload();
+      this.ngAfterViewInit()
     });
   }
   unfollow() {
     this._service.unfollow(this.user).subscribe((result) => {
-      window.location.reload();
+      this.ngAfterViewInit()
     });
   }
 
