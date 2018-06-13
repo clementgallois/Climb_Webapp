@@ -16,8 +16,9 @@
 
 .user-bar {
   display:flex;
-  width: 50%;
-  justify-content: space-around;
+  margin:0px 5px;
+  width: 45%;
+  justify-content: space-between;
   align-items: center;
 }
 .user-img {
@@ -51,17 +52,26 @@
   padding-top:12px;
 }
 
+.score-name{
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.usr{
+  display:flex;
+}
 .usr a{
     font-size: 1.1em;
     font-weight: bold;
 }
-.user1 .usr a{
+.user1 .usr {
       margin-left: 5px;
+}
+.usr a{
       color: #404040;
 }
-.user2 .usr a{
+.user2 .usr {
       margin-right: 5px;
-      color: #404040;
 }
 
 .panel.battle .divider {
